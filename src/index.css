@@ -1,0 +1,165 @@
+/* ===========================
+Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ===========================
+Reset
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+
+cursor:none;
+
+}
+a,
+button,
+input,
+textarea{
+
+cursor:none;
+
+}
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:#050505;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff003c;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#ff295d;
+}
+
+/* Selection */
+
+::selection{
+    background:#ff003c;
+    color:white;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* Lists */
+
+ul{
+    list-style:none;
+}
+
+/* Images */
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* Buttons */
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* Inputs */
+
+input,
+textarea{
+    font-family:inherit;
+}
+
+/* Layout */
+
+main{
+    min-height:100vh;
+}
+
+/* Background Grid */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,0,60,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,0,60,.06) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    z-index:-2;
+
+}
+
+/* Red Glow */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+
+    height:500px;
+
+    background:#ff003c;
+
+    filter:blur(180px);
+
+    opacity:.12;
+
+    top:-150px;
+
+    right:-150px;
+
+    z-index:-1;
+
+}
+
+/* Container */
+
+.container{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+}

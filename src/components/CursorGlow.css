@@ -1,0 +1,26 @@
+.cursor-glow{
+
+position:fixed;
+
+width:24px;
+height:24px;
+
+border-radius:50%;
+
+background:#ff003c;
+
+pointer-events:none;
+
+transform:translate(-50%,-50%);
+
+z-index:99999;
+
+filter:blur(12px);
+
+opacity:.65;
+
+transition:opacity .25s;
+
+mix-blend-mode:screen;
+
+}

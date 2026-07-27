@@ -1,0 +1,167 @@
+.thm-page{
+    min-height:100vh;
+    padding:120px 8%;
+}
+
+.thm-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-tag{
+    color:#ff003c;
+    letter-spacing:3px;
+}
+
+.thm-header h1{
+    font-size:58px;
+    margin:20px 0;
+}
+
+.thm-header span{
+    color:#ff003c;
+}
+
+.thm-header p{
+    color:#999;
+    max-width:750px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.profile-card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:40px;
+    margin-bottom:50px;
+}
+
+.profile-left{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.profile-left img{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #ff003c;
+}
+
+.profile-left h2{
+    font-size:34px;
+}
+
+.profile-left p{
+    color:#999;
+    margin:10px 0;
+}
+
+.student{
+    display:inline-block;
+    background:#ff003c;
+    padding:8px 18px;
+    border-radius:30px;
+    margin-bottom:20px;
+}
+
+.profile-left a{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    width:max-content;
+    color:white;
+    background:#ff003c;
+    padding:12px 20px;
+    border-radius:30px;
+    margin-top:20px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    margin-bottom:60px;
+}
+
+.stat-card{
+    background:#111;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    border-color:#ff003c;
+    transform:translateY(-8px);
+}
+
+.stat-card svg{
+    font-size:40px;
+    color:#ff003c;
+    margin-bottom:20px;
+}
+
+.stat-card h3{
+    color:#999;
+    margin-bottom:10px;
+}
+
+.stat-card h2{
+    font-size:36px;
+}
+
+.achievement{
+    background:#111;
+    border:1px solid #222;
+    padding:40px;
+    border-radius:20px;
+    margin-bottom:60px;
+}
+
+.achievement h2{
+    margin-bottom:25px;
+}
+
+.achievement ul{
+    line-height:2.2;
+    color:#bbb;
+}
+
+.badge-image{
+    text-align:center;
+}
+
+.badge-image h2{
+    margin-bottom:30px;
+}
+
+.badge-image img{
+    width:100%;
+    max-width:1100px;
+    border-radius:20px;
+    border:1px solid #222;
+}
+
+@media(max-width:900px){
+
+.stats-grid{
+grid-template-columns:1fr;
+}
+
+.profile-left{
+flex-direction:column;
+text-align:center;
+}
+
+.profile-left a{
+margin:auto;
+margin-top:20px;
+}
+
+}
