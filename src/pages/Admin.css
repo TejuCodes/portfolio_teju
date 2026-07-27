@@ -1,57 +1,151 @@
-.scan-animation{
+.admin-page{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#050505;
+
+}
+
+
+.login-box{
+
+width:350px;
+
+padding:40px;
+
+background:#0b0b0b;
+
+border:1px solid #ff003c;
+
+border-radius:15px;
 
 display:flex;
 
 flex-direction:column;
 
-align-items:center;
+gap:20px;
 
-justify-content:center;
+box-shadow:0 0 30px rgba(255,0,60,.4);
 
-margin-top:20px;
+}
+
+
+.login-box h2{
 
 color:#ff003c;
 
-font-family:monospace;
+text-align:center;
 
 }
 
 
-.scan-animation img{
+.login-box input{
 
-width:180px;
+padding:15px;
 
-height:180px;
+background:#111;
 
-object-fit:cover;
+border:1px solid #333;
+
+color:white;
+
+border-radius:8px;
+
+outline:none;
+
+}
+
+
+.login-box input:focus{
+
+border-color:#ff003c;
+
+}
+
+
+.login-box button{
+
+padding:15px;
+
+background:#ff003c;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+
+
+/* GIF POPUP */
+
+.gif-popup{
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+z-index:9999;
+
+background:#000;
+
+padding:20px;
+
+border:2px solid #ff003c;
 
 border-radius:15px;
 
-border:1px solid #ff003c;
+box-shadow:0 0 40px #ff003c;
 
-box-shadow:
-0 0 15px #ff003c,
-0 0 35px rgba(255,0,60,.5);
+animation:pop .3s ease;
 
 }
 
 
+.gif-popup img{
 
-.scan-animation p{
+width:250px;
 
-font-size:14px;
+height:250px;
 
-animation:blink 1s infinite;
+object-fit:cover;
+
+border-radius:10px;
 
 }
 
 
+@keyframes pop{
 
-@keyframes blink{
+from{
 
-50%{
+transform:translate(-50%,-50%) scale(.5);
 
-opacity:.3;
+opacity:0;
+
+}
+
+to{
+
+transform:translate(-50%,-50%) scale(1);
+
+opacity:1;
 
 }
 
