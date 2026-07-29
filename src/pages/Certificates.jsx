@@ -1,10 +1,12 @@
 import "./Certificates.css";
 import certificates from "../data/certificates";
-import { FaExternalLinkAlt } from "react-icons/fa";
-
+import { FaExternalLinkAlt, FaCheckCircle } from "react-icons/fa";
+import badges from "../data/badges";
 function Certificates() {
   return (
     <section className="certificates-page">
+
+      {/* Header */}
 
       <div className="cert-header">
 
@@ -17,38 +19,102 @@ function Certificates() {
         </h1>
 
         <p>
-          Certifications and learning milestones collected throughout my
-          cybersecurity journey.
+          Industry-recognized certifications earned through continuous learning,
+          hands-on cybersecurity labs, and professional development.
         </p>
 
       </div>
 
+      {/* Grid */}
+{/* ================= BADGES ================= */}
+
+<div className="badge-section">
+
+  <div className="badge-title">
+    <h2>🏅 TryHackMe Badges</h2>
+
+    <span className="badge-count">
+      {badges.length} Earned +
+    </span>
+  </div>
+
+  <div className="badge-marquee">
+
+    <div className="badge-track">
+
+      {[...badges, ...badges].map((badge, index) => (
+
+        <div className="badge-item" key={index}>
+
+          <img
+            src={badge.image}
+            alt={badge.name}
+          />
+
+        </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</div>
       <div className="certificate-grid">
 
         {certificates.map((cert) => (
 
-          <div className="certificate-card" key={cert.id}>
+          <div
+            className="certificate-card"
+            key={cert.id}
+          >
 
-            <img
-              src={cert.image}
-              alt={cert.title}
-            />
+            {/* Top */}
 
-            <div className="certificate-content">
+            <div className="cert-top">
 
-              <h3>{cert.title}</h3>
+              <div className={`cert-icon ${cert.issuer.toLowerCase()}`}>
+                {cert.issuer.charAt(0)}
+              </div>
 
-              <p>{cert.issuer}</p>
+              <div>
 
-              <small>{cert.date}</small>
+                <h3>{cert.title}</h3>
+
+                <p>
+                  {cert.issuer}
+                </p>
+
+                <small>
+                  {cert.date}
+                </small>
+
+              </div>
+
+            </div>
+
+            {/* Bottom */}
+
+            <div className="cert-bottom">
+
+              <span className="verified">
+
+                <FaCheckCircle />
+
+                Verified Credential
+
+              </span>
 
               <a
                 href={cert.verify}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View Certificate
+
+                View Credential
+
                 <FaExternalLinkAlt />
+
               </a>
 
             </div>

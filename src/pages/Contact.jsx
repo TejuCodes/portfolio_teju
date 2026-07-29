@@ -96,41 +96,77 @@ function Contact() {
 
         {/* Contact Form */}
 
-        <div className="contact-form">
+       {/* Connect Hub */}
 
-          <h2>Send a Message</h2>
+<div className="connect-card">
 
-          <form>
+  <div className="connect-top">
+    <h2>Ready to Collaborate?</h2>
 
-            <input
-              type="text"
-              placeholder="Your Name"
-            />
+    <p>
+      Whether it's cybersecurity, web development, open-source projects,
+      internships, or research, I'm always interested in connecting with
+      professionals and fellow learners.
+    </p>
+  </div>
 
-            <input
-              type="email"
-              placeholder="Email Address"
-            />
+  <div className="availability">
 
-            <input
-              type="text"
-              placeholder="Subject"
-            />
+    <div className="status">
+      <span className="status-dot"></span>
+      Available for Opportunities
+    </div>
 
-            <textarea
-              rows="6"
-              placeholder="Your Message"
-            ></textarea>
+    <div className="status">
+      🎓 MSc Cybersecurity Student
+    </div>
 
-            <button type="submit">
-              <FaPaperPlane />
-              Send Message
-            </button>
+    <div className="status">
+      🔐 Interested in SOC • Pentesting • Web Security
+    </div>
 
-          </form>
+  </div>
 
-        </div>
+  <div className="quick-links">
 
+    <a
+      href="mailto:tejashwin.cybersec@gmail.com"
+      className="action-btn"
+    >
+      <FaEnvelope />
+      Email Me
+    </a>
+
+    <a
+      href="https://github.com/TejuCodes"
+      target="_blank"
+      rel="noreferrer"
+      className="action-btn"
+    >
+      <FaGithub />
+      GitHub
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/tejashwin2004/"
+      target="_blank"
+      rel="noreferrer"
+      className="action-btn"
+    >
+      <FaLinkedin />
+      LinkedIn
+    </a>
+
+  </div>
+
+  <div className="quote-box">
+    <p>
+      "Security isn't just about finding vulnerabilities —
+      it's about building trust."
+    </p>
+  </div>
+
+</div>
       </div>
 
     </section>

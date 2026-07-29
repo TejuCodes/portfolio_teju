@@ -6,7 +6,6 @@ import CursorGlow from "./components/CursorGlow";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import TryHackMe from "./pages/TryHackMe";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 function App() {
@@ -22,7 +21,6 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/certificates" element={<Certificates />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/tryhackme" element={<TryHackMe />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>

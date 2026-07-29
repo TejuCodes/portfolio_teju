@@ -1,139 +1,481 @@
+/* ==========================================
+   CERTIFICATES PAGE
+========================================== */
+
 .certificates-page{
-
-padding:120px 8%;
-
-min-height:100vh;
-
+    padding:120px 8%;
+    min-height:100vh;
 }
 
 .cert-header{
-
-text-align:center;
-
-margin-bottom:70px;
-
+    text-align:center;
+    margin-bottom:70px;
 }
 
 .cert-header h1{
-
-font-size:56px;
-
-margin:20px 0;
-
+    font-size:clamp(2.8rem,5vw,4rem);
+    margin:20px 0;
+    color:#fff;
 }
 
 .cert-header span{
-
-color:#ff003c;
-
+    color:#ff003c;
 }
 
 .cert-header p{
-
-max-width:700px;
-
-margin:auto;
-
-color:#999;
-
-line-height:1.8;
-
+    max-width:720px;
+    margin:auto;
+    color:#a5a5a5;
+    line-height:1.8;
+    font-size:16px;
 }
+
+/* ==========================================
+   GRID
+========================================== */
 
 .certificate-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
 
-gap:35px;
+    gap:30px;
 
 }
 
+/* ==========================================
+   CARD
+========================================== */
+
 .certificate-card{
 
-background:#101010;
+    background:#121212;
 
-border:1px solid #202020;
+    border:1px solid #242424;
 
-border-radius:20px;
+    border-radius:20px;
 
-overflow:hidden;
+    padding:28px;
 
-transition:.35s;
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.certificate-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:4px;
+
+    height:100%;
+
+    background:#ff003c;
+
+    transform:scaleY(0);
+
+    transform-origin:top;
+
+    transition:.35s;
 
 }
 
 .certificate-card:hover{
 
-transform:translateY(-10px);
+    transform:translateY(-8px);
 
-border-color:#ff003c;
+    border-color:#ff003c;
 
-box-shadow:0 15px 40px rgba(255,0,60,.2);
+    box-shadow:
+    0 15px 40px rgba(255,0,60,.15);
 
 }
 
-.certificate-card img{
+.certificate-card:hover::before{
+
+    transform:scaleY(1);
+
+}
+
+/* ==========================================
+   TOP
+========================================== */
+
+.cert-top{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:flex-start;
+
+}
+
+.cert-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:white;
+
+    flex-shrink:0;
+
+}
+
+/* Different Colors */
+
+.google{
+
+    background:#4285F4;
+
+}
+
+.cisco{
+
+    background:#049FD9;
+
+}
+
+.ibm{
+
+    background:#1261FE;
+
+}
+
+.tryhackme{
+
+    background:#88cc14;
+
+    color:#111;
+
+}
+
+/* ==========================================
+   TEXT
+========================================== */
+
+.cert-top h3{
+
+    color:#fff;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+    margin-bottom:8px;
+
+}
+
+.cert-top p{
+
+    color:#c2c2c2;
+
+    margin-bottom:6px;
+
+}
+
+.cert-top small{
+
+    color:#777;
+
+}
+
+/* ==========================================
+   BOTTOM
+========================================== */
+
+.cert-bottom{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.verified{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#4ade80;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.cert-bottom a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    background:#191919;
+
+    border:1px solid #2d2d2d;
+
+    color:#ff003c;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.cert-bottom a:hover{
+
+    background:#ff003c;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+.certificate-grid{
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+}
+
+}
+
+@media(max-width:768px){
+
+.certificates-page{
+
+padding:90px 6%;
+
+}
+
+.cert-header{
+
+margin-bottom:50px;
+
+}
+
+.certificate-grid{
+
+grid-template-columns:1fr;
+
+gap:22px;
+
+}
+
+.certificate-card{
+
+padding:22px;
+
+}
+
+.cert-top{
+
+gap:15px;
+
+}
+
+.cert-icon{
+
+width:50px;
+
+height:50px;
+
+font-size:20px;
+
+border-radius:14px;
+
+}
+
+.cert-top h3{
+
+font-size:20px;
+
+}
+
+.cert-bottom{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.cert-bottom a{
 
 width:100%;
 
-height:220px;
-
-object-fit:cover;
+justify-content:center;
 
 }
 
-.certificate-content{
+}
 
-padding:25px;
+@media(max-width:480px){
+
+.cert-header h1{
+
+font-size:34px;
 
 }
 
-.certificate-content h3{
+.cert-header p{
 
-margin-bottom:10px;
-
-}
-
-.certificate-content p{
-
-color:#bbb;
-
-margin-bottom:8px;
+font-size:15px;
 
 }
 
-.certificate-content small{
+.cert-icon{
 
-display:block;
+width:45px;
 
-color:#777;
+height:45px;
 
-margin-bottom:20px;
-
-}
-
-.certificate-content a{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:10px;
-
-color:#ff003c;
-
-text-decoration:none;
-
-font-weight:600;
-
-transition:.3s;
+font-size:18px;
 
 }
 
-.certificate-content a:hover{
+.cert-top h3{
 
-transform:translateX(6px);
+font-size:18px;
 
+}
+
+}
+/* ===========================
+   BADGES
+=========================== */
+
+.badge-section{
+    margin-bottom:80px;
+}
+
+.badge-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.badge-title h2{
+    color:#fff;
+    font-size:32px;
+}
+
+.badge-count{
+    background:#ff003c;
+    color:#fff;
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.badge-marquee{
+    overflow:hidden;
+    border-radius:18px;
+    background:#121212;
+    border:1px solid #242424;
+    padding:25px 0;
+}
+
+.badge-track{
+    display:flex;
+    gap:35px;
+    width:max-content;
+    animation:badgeScroll 40s linear infinite;
+}
+
+.badge-marquee:hover .badge-track{
+    animation-play-state:paused;
+}
+
+.badge-item{
+    width:120px;
+    height:120px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#181818;
+
+    border-radius:20px;
+
+    transition:.35s;
+}
+
+.badge-item:hover{
+    transform:translateY(-8px);
+}
+
+.badge-item img{
+    width:95px;
+    height:95px;
+    object-fit:contain;
+}
+
+@keyframes badgeScroll{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
 }

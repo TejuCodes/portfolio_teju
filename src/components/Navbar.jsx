@@ -72,12 +72,6 @@ function Navbar() {
           </li>
 
           <li>
-            <NavLink to="/tryhackme" onClick={closeMenu}>
-              TryHackMe
-            </NavLink>
-          </li>
-
-          <li>
             <NavLink to="/contact" onClick={closeMenu}>
               Contact
             </NavLink>

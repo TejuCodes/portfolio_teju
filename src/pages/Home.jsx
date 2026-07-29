@@ -11,12 +11,7 @@ function Home() {
   return (
     <section className="hero">
 
-      <div className="hero-left">
-
-        <span className="hero-tag">
-          CYBERSECURITY ENGINEER
-        </span>
-
+      <div className="hero-left"><br></br>
         <h1>
           Building
           <br />
@@ -32,13 +27,13 @@ function Home() {
 
         <div className="hero-buttons">
 
-          <Link to="/projects" className="primary-btn">
-            View Projects
+          <Link to="/about" className="primary-btn">
+             About Me
             <FaArrowRight />
           </Link>
 
-          <Link to="/about" className="secondary-btn">
-            About Me
+          <Link to="/projects" className="secondary-btn">
+            View Projects
           </Link>
 
         </div>
@@ -54,7 +49,7 @@ function Home() {
           </a>
 
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/tejashwin2004/"
             target="_blank"
             rel="noreferrer"
           >
@@ -68,44 +63,48 @@ function Home() {
         </div>
 
       </div>
+<div className="hero-right">
 
-      <div className="hero-right">
+  <div className="terminal">
 
-        <div className="terminal">
+    <div className="terminal-header">
+      <span className="red"></span>
+      <span className="yellow"></span>
+      <span className="green"></span>
+    </div>
 
-          <div className="terminal-header">
+    <div className="terminal-body">
 
-            <span className="red"></span>
-            <span className="yellow"></span>
-            <span className="green"></span>
+      <p>$ whoami</p>
+      <span>Tejashwin</span>
 
-          </div>
+      <p>$ hostname</p>
+      <span>secureboot-v3</span>
 
-          <div className="terminal-body">
+      <p>$ cat role.txt</p>
+      <span>Cybersecurity Student</span>
 
-            <p>$ whoami</p>
-            <span>Tejashwin</span>
+      <p>$ ls skills/</p>
+      <span>Linux</span>
+      <span>Networking</span>
+      <span>Python</span>
+      <span>React.js</span>
+      <span>Node.js</span>
+      <span>Burp Suite</span>
+      <span>OWASP</span>
 
-            <p>$ role</p>
-            <span>Cybersecurity Engineer</span>
+      <p>$ current_project</p>
+      <span>Hermes Agent</span>
+      <span> WVLE</span>
 
-            <p>$ skills</p>
-            <span>Linux</span>
-            <span>Networking</span>
-            <span>Python</span>
-            <span>Burp Suite</span>
-            <span>SOC Operations</span>
+      <p>$ status</p>
+      <span className="online">● ONLINE</span>
 
-            <p>$ status</p>
-            <span className="online">
-              ONLINE_
-            </span>
+    </div>
 
-          </div>
+  </div>
 
-        </div>
-
-      </div>
+</div>
 
     </section>
   );

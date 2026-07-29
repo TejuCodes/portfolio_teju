@@ -14,11 +14,6 @@ description:"Local AI Agent integrated with Ollama, Telegram Bot and custom LLM.
 stack:"Python • Ollama • AI",
 },
 
-{
-title:"Cyber Buddy Robot",
-description:"Affordable ESP32-powered cybersecurity desktop assistant.",
-stack:"ESP32 • IoT • Arduino",
-},
 
 {
 title:"Portfolio Website",
