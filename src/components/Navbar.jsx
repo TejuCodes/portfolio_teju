@@ -78,13 +78,13 @@ function Navbar() {
           </li>
 
           <li className="mobile-only">
-            <a href="/resume.pdf">Resume</a>
+            <a href="../src/assets/Tejashwin-SResume.pdf">Resume</a>
           </li>
 
         </ul>
 
         <a
-          href="/resume.pdf"
+          href="../src/assets/Tejashwin-SResume.pdf"
           className="resume-btn desktop-only"
         >
           Resume
