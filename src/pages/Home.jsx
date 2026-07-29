@@ -63,48 +63,6 @@ function Home() {
         </div>
 
       </div>
-<div className="hero-right">
-
-  <div className="terminal">
-
-    <div className="terminal-header">
-      <span className="red"></span>
-      <span className="yellow"></span>
-      <span className="green"></span>
-    </div>
-
-    <div className="terminal-body">
-
-      <p>$ whoami</p>
-      <span>Tejashwin</span>
-
-      <p>$ hostname</p>
-      <span>secureboot-v3</span>
-
-      <p>$ cat role.txt</p>
-      <span>Cybersecurity Student</span>
-
-      <p>$ ls skills/</p>
-      <span>Linux</span>
-      <span>Networking</span>
-      <span>Python</span>
-      <span>React.js</span>
-      <span>Node.js</span>
-      <span>Burp Suite</span>
-      <span>OWASP</span>
-
-      <p>$ current_project</p>
-      <span>Hermes Agent</span>
-      <span> WVLE</span>
-
-      <p>$ status</p>
-      <span className="online">● ONLINE</span>
-
-    </div>
-
-  </div>
-
-</div>
 
     </section>
   );
