@@ -148,7 +148,7 @@ function Contact() {
     </a>
 
     <a
-      href="https://www.linkedin.com/in/tejashwin2004/"
+      href="https://www.linkedin.com/in/faceofteju/"
       target="_blank"
       rel="noreferrer"
       className="action-btn"

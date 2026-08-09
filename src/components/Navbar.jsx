@@ -77,18 +77,26 @@ function Navbar() {
             </NavLink>
           </li>
 
-          <li className="mobile-only">
-            <a href="../src/assets/Tejashwin-SResume.pdf">Resume</a>
-          </li>
+         <li className="mobile-only">
+  <a
+    href="/Tejashwin-SResume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Resume
+  </a>
+</li>
 
         </ul>
 
         <a
-          href="../src/assets/Tejashwin-SResume.pdf"
-          className="resume-btn desktop-only"
-        >
-          Resume
-        </a>
+  href="/Tejashwin-SResume.pdf"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="resume-btn desktop-only"
+>
+  Resume
+</a>
 
         <button
           className="menu-btn"

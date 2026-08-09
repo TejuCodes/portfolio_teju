@@ -19,10 +19,7 @@ function Home() {
         </h1>
 
         <p>
-          I'm <strong>Tejashwin</strong>, an MSc Cybersecurity student passionate
-          about Offensive Security, SOC Operations, AI Security, and building
-          secure applications. I enjoy solving real-world security challenges
-          while continuously learning modern technologies.
+         I'm <strong style={{ color: "red" }}>Tejashwin</strong> a cybersecurity learner who believes the best way to understand security is to get hands-on. I explore everything from offensive security and vulnerability research to SOC operations and network security, while building projects and experimenting with real-world security tools. I break things to understand how they work, build things to make them better, and keep learning along the way.
         </p>
 
         <div className="hero-buttons">
@@ -49,7 +46,7 @@ function Home() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/tejashwin2004/"
+            href="https://www.linkedin.com/in/faceofteju/"
             target="_blank"
             rel="noreferrer"
           >
