@@ -1,7 +1,8 @@
 import useInView from "../../hooks/useInView";
+import inkProps from "./inkProps";
 import "./sketches.css";
 
-function Sketch({
+export function Sketch({
   viewBox = "0 0 200 140",
   className = "",
   title,
@@ -31,13 +32,6 @@ function Sketch({
     </svg>
   );
 }
-
-const inkProps = {
-  stroke: "currentColor",
-  strokeWidth: "1.55",
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-};
 
 export function SketchMonitor() {
   return (
@@ -104,6 +98,12 @@ export function SketchMonitor() {
         <path pathLength="1" data-draw style={{ "--dd": ".95s" }} d="M214 34L214 44" />
         <path pathLength="1" data-draw style={{ "--dd": "1s" }} d="M209 39L219 39" />
       </g>
+      <path
+        className="loop-scan accent-stroke"
+        d="M55 57H164"
+        style={{ "--ty": "34px" }}
+        strokeWidth="1.1"
+      />
       <g className="hatch" {...inkProps}>
         <path d="M22 48L16 56" />
         <path d="M21 58L15 66" />
@@ -170,94 +170,6 @@ export function SketchShield() {
   );
 }
 
-export function SketchNetwork() {
-  return (
-    <Sketch viewBox="0 0 240 150">
-      <g {...inkProps}>
-        <path pathLength="1" data-draw d="M46 108C62 94 64 68 78 56" />
-        <path pathLength="1" data-draw style={{ "--dd": ".25s" }} d="M89 52C102 58 112 66 118 72" />
-        <path pathLength="1" data-draw style={{ "--dd": ".35s" }} d="M133 82C148 84 160 66 172 52" />
-        <path pathLength="1" data-draw style={{ "--dd": ".45s" }} d="M132 85C154 96 174 104 186 108" />
-        <path pathLength="1" data-draw style={{ "--dd": ".55s" }} d="M46 116C92 132 160 128 186 116" />
-        <path pathLength="1" data-draw style={{ "--dd": ".65s" }} d="M118 70C110 52 100 42 88 44" />
-        <circle pathLength="1" data-draw style={{ "--dd": ".7s" }} cx="38" cy="112" r="8" />
-        <circle pathLength="1" data-draw style={{ "--dd": ".8s" }} cx="80" cy="46" r="9" />
-        <circle pathLength="1" data-draw style={{ "--dd": ".9s" }} cx="126" cy="78" r="8" />
-        <circle pathLength="1" data-draw style={{ "--dd": "1s" }} cx="176" cy="44" r="7" />
-        <circle pathLength="1" data-draw style={{ "--dd": "1.1s" }} cx="192" cy="112" r="8" />
-      </g>
-      <g className="dot">
-        <circle className="loop-pulse" style={{ "--ld": "0s" }} cx="38" cy="112" r="2.1" />
-        <circle className="loop-pulse" style={{ "--ld": "0.9s" }} cx="80" cy="46" r="2.4" />
-        <circle className="loop-pulse" style={{ "--ld": "1.8s" }} cx="126" cy="78" r="2.1" />
-        <circle className="loop-pulse" style={{ "--ld": "0.5s" }} cx="176" cy="44" r="1.8" />
-        <circle className="loop-pulse" style={{ "--ld": "1.3s" }} cx="192" cy="112" r="2.1" />
-      </g>
-      <circle
-        className="loop-drift"
-        style={{ "--ld": "0s", "--lt": "6.5s" }}
-        cx="60"
-        cy="96"
-        r="2.4"
-        fill="currentColor"
-        stroke="none"
-      />
-      <circle
-        className="loop-drift"
-        style={{ "--ld": "-3s", "--lt": "7.5s" }}
-        cx="150"
-        cy="104"
-        r="1.8"
-        fill="currentColor"
-        stroke="none"
-      />
-      <circle
-        className="loop-packet"
-        cx="46"
-        cy="116"
-        r="3.2"
-        fill="currentColor"
-        stroke="none"
-      />
-      <circle
-        className="loop-ring"
-        style={{ "--ld": "0s" }}
-        cx="126"
-        cy="78"
-        r="8"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <circle
-        className="loop-ring"
-        style={{ "--ld": "-1.5s" }}
-        cx="80"
-        cy="46"
-        r="9"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.2"
-      />
-      <g
-        className="loop-orbit"
-        style={{ "--ox": "126px", "--oy": "78px", "--lt": "11s" }}
-      >
-        <circle cx="126" cy="60" r="2.6" fill="currentColor" stroke="none" />
-      </g>
-      <g className="hatch" {...inkProps}>
-        <path d="M196 126L206 132" />
-        <path d="M206 128L212 120" />
-        <path d="M20 130L32 126L28 138" />
-      </g>
-      <g className="accent-stroke" {...inkProps} strokeWidth="1.3">
-        <path pathLength="1" data-draw style={{ "--dd": "1.2s" }} d="M212 58l7 7" />
-        <path pathLength="1" data-draw style={{ "--dd": "1.25s" }} d="M219 58l-7 7" />
-      </g>
-    </Sketch>
-  );
-}
-
 export function SketchBrowser() {
   return (
     <Sketch viewBox="0 0 240 176">
@@ -311,6 +223,7 @@ export function SketchBrowser() {
       </g>
       <path
         className="loop-scan accent-stroke"
+        style={{ "--ty": "68px" }}
         d="M40 62H162"
         strokeWidth="1.2"
         strokeDasharray="2 3"
@@ -356,6 +269,11 @@ export function SketchLock() {
         <path pathLength="1" data-draw style={{ "--dd": "1.1s" }} d="M128 56l8 8" />
         <path pathLength="1" data-draw style={{ "--dd": "1.15s" }} d="M136 56l-8 8" />
       </g>
+      <path
+        className="loop-trace accent-stroke"
+        pathLength="1"
+        d="M48 78V52C48 32 62 20 80 20C98 20 112 33 112 53V78"
+      />
     </Sketch>
   );
 }

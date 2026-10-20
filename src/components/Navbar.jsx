@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 import "./Navbar.css";
 
 const navLinks = [
   { href: "#home", no: "01", label: "Home" },
   { href: "#about", no: "02", label: "About Me" },
-  { href: "#experience", no: "03", label: "Experience" },
-  { href: "#certifications", no: "04", label: "Certifications" },
-  { href: "#projects", no: "05", label: "Projects" },
-  { href: "#publication", no: "06", label: "Publication" },
-  { href: "#contact", no: "07", label: "Contact" },
+  { href: "#certifications", no: "03", label: "Certifications" },
+  { href: "#projects", no: "04", label: "Projects" },
+  { href: "#experience", no: "05", label: "Experience" },
+  { href: "#contact", no: "06", label: "Contact" },
 ];
 
 const mobileSocials = [
@@ -34,6 +34,7 @@ const mobileSocials = [
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("home");
+  const menuButtonRef = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -41,6 +42,20 @@ function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, [menuOpen]);
 
   useEffect(() => {
@@ -78,7 +93,10 @@ function Navbar() {
             <span className="nav-logo-tag">field notes</span>
           </a>
 
-          <ul className={`nav-menu ${menuOpen ? "open" : ""}`}>
+          <ul
+            className={`nav-menu ${menuOpen ? "open" : ""}`}
+            id="primary-nav"
+          >
             <li className="nav-menu-head" aria-hidden="true">
               <span className="hand nav-menu-kicker">the field notes</span>
               <span className="nav-menu-line" />
@@ -151,6 +169,8 @@ function Navbar() {
             </li>
           </ul>
 
+          <ThemeToggle />
+
           <a
             className="nav-resume desktop-only"
             href="/Tejashwin-SResume.pdf"
@@ -162,9 +182,11 @@ function Navbar() {
 
           <button
             className="menu-btn"
+            ref={menuButtonRef}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={menuOpen}
+            aria-controls="primary-nav"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>

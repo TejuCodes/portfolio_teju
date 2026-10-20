@@ -11,16 +11,34 @@ import Contact from "./pages/Contact";
 
 function App() {
   useEffect(() => {
-    const reduce = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (reduce) return;
-
     const root = document.documentElement;
-    root.classList.add("motion-ready");
+    const motionPreference = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    const syncMotionPreference = () => {
+      root.classList.toggle("motion-ready", !motionPreference.matches);
+    };
+    let deepLinkFrame = null;
 
-    return () => root.classList.remove("motion-ready");
+    syncMotionPreference();
+    motionPreference.addEventListener("change", syncMotionPreference);
+
+    if (window.location.hash) {
+      const target = document.getElementById(
+        decodeURIComponent(window.location.hash.slice(1))
+      );
+      if (target) {
+        deepLinkFrame = requestAnimationFrame(() =>
+          target.scrollIntoView({ behavior: "instant", block: "start" })
+        );
+      }
+    }
+
+    return () => {
+      motionPreference.removeEventListener("change", syncMotionPreference);
+      if (deepLinkFrame !== null) cancelAnimationFrame(deepLinkFrame);
+      root.classList.remove("motion-ready");
+    };
   }, []);
 
   return (
@@ -34,9 +52,9 @@ function App() {
       <main id="main">
         <Home />
         <About />
-        <Experience />
         <Certificates />
         <Projects />
+        <Experience />
         <Publication />
         <Contact />
       </main>

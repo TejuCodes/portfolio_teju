@@ -2,17 +2,15 @@ import "./Home.css";
 import Reveal from "../components/Reveal";
 import useParallax from "../hooks/useParallax";
 import {
-  SketchMonitor,
-  SketchPortrait,
-  DoodleArrowDown,
   DoodleCircle,
   DoodleCross,
   DoodleStar,
   DoodleUnderline,
 } from "../components/sketches/Sketches";
+import { SketchWorkspace } from "../components/sketches/CyberSketches";
 
 function Home() {
-  const monitorRef = useParallax({ strength: 0.05, max: 12 });
+  const illustrationRef = useParallax({ strength: 0.035, max: 9 });
 
   return (
     <section className="section hero" id="home">
@@ -22,11 +20,8 @@ function Home() {
           <DoodleCross className="hero-doodle hero-doodle--cross" />
         </div>
 
-        <div className="hero-portrait" aria-hidden="true">
-          <SketchPortrait />
-        </div>
-
         <p className="mono-label hero-eyebrow">
+          01 / field notes
         </p>
 
         <Reveal as="article" className="hero-sheet">
@@ -40,6 +35,14 @@ function Home() {
           </h1>
 
           <DoodleUnderline className="hero-underline" />
+
+          <p className="hero-role">
+            Cybersecurity student <span>/</span> aspiring security engineer
+          </p>
+          <p className="hero-lede">
+            I explore cybersecurity from both sides: finding weaknesses and
+            learning how to defend them.
+          </p>
 
           <div className="hero-actions">
             <a href="#projects" className="ink-link hero-action">
@@ -55,8 +58,8 @@ function Home() {
           </p>
         </Reveal>
 
-        <div className="hero-monitor parallax" ref={monitorRef} aria-hidden="true">
-          <SketchMonitor />
+        <div className="hero-monitor hero-workspace parallax" ref={illustrationRef} aria-hidden="true">
+          <SketchWorkspace />
         </div>
       </div>
     </section>

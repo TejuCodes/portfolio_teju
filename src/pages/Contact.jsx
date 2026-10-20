@@ -45,7 +45,7 @@ function Contact() {
           <div className="contact-main">
             <Reveal className="sec-head contact-head">
               <div className="sec-top">
-                <span className="sec-mark">07 / correspondence</span>
+                <span className="sec-mark">06 / correspondence</span>
                 <span className="sec-rule" aria-hidden="true" />
               </div>
               <p className="hand contact-hand">the last page —</p>

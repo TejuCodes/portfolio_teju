@@ -4,7 +4,7 @@
   z-index: 140;
   background: var(--c-paper);
   border-bottom: 1.5px solid var(--c-ink);
-  box-shadow: 0 8px 18px -16px rgba(47, 45, 41, 0.6);
+  box-shadow: 0 8px 18px -16px var(--nav-shadow);
 }
 
 .nav-inner {
@@ -23,8 +23,8 @@
 
 .nav-logo-mark {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.5rem;
+  font-weight: 700;
+  font-size: 1.65rem;
   line-height: 1;
   color: var(--c-ink);
 }
@@ -35,7 +35,8 @@
 
 .nav-logo-tag {
   font-family: var(--font-mono);
-  font-size: 8.5px;
+  font-size: 11px;
+  font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--c-ink-3);
@@ -52,10 +53,10 @@
   position: relative;
   display: inline-block;
   padding: 8px 0;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-body);
+  font-size: var(--type-nav);
+  font-weight: 500;
+  letter-spacing: 0.035em;
   text-transform: uppercase;
   color: var(--c-ink-2);
   transition: color 0.2s ease;
@@ -87,7 +88,7 @@
 }
 
 .nav-no {
-  font-size: 8.5px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--c-ink-3);
   margin-right: 5px;
@@ -102,10 +103,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-family: var(--font-body);
+  font-size: var(--type-nav);
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--c-ink);
   padding-bottom: 4px;
@@ -147,7 +148,7 @@
   position: fixed;
   inset: var(--nav-h) 0 0;
   z-index: 90;
-  background: rgba(47, 45, 41, 0.35);
+  background: var(--nav-scrim);
 }
 
 /* ---- Mobile menu ---- */
@@ -165,7 +166,15 @@
 
   .menu-btn {
     display: grid;
+    margin-left: 0;
+    position: relative;
+    z-index: 131;
+  }
+
+  .theme-toggle {
     margin-left: auto;
+    position: relative;
+    z-index: 131;
   }
 
   .nav-menu {
@@ -203,7 +212,8 @@
   .nav-menu-kicker {
     flex: none;
     font-family: var(--font-hand);
-    font-size: 1.5rem;
+    font-size: var(--type-note);
+    font-weight: 600;
     color: var(--c-red);
     transform: rotate(-1.5deg);
   }
@@ -223,10 +233,10 @@
     align-items: baseline;
     gap: 14px;
     padding: 12px 0;
-    font-family: var(--font-display);
-    font-size: clamp(1.7rem, 7.5vw, 2.4rem);
-    font-weight: 400;
-    letter-spacing: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     text-transform: none;
     color: var(--c-ink-2);
     border-bottom: 1px dashed var(--c-rule);
@@ -299,10 +309,10 @@
     display: inline-block;
     width: auto;
     padding: 12px 0;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--c-ink);
     border-bottom: 2px solid var(--c-red);
@@ -318,10 +328,12 @@
   }
 
   .nav-menu.open .nav-social a {
-    padding: 4px 0;
+    min-height: 40px;
+    align-items: center;
+    padding: 8px 0;
     font-family: var(--font-mono);
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--c-ink-2);
     border: none;
@@ -335,7 +347,7 @@
 
 @media (max-width: 380px) {
   .nav-menu.open a {
-    font-size: 1.5rem;
+    font-size: 16px;
     padding: 10px 0;
   }
 }

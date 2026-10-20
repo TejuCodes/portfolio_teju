@@ -1,13 +1,11 @@
 import "./Experience.css";
-import certificates from "../data/certificates";
 import Reveal from "../components/Reveal";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   DoodleUnderline,
+  SketchShield,
   SketchSpine,
 } from "../components/sketches/Sketches";
-
-const thmCert = certificates.find((cert) => cert.issuer === "TryHackMe");
 
 const entries = [
   {
@@ -38,7 +36,7 @@ function Experience() {
       <div className="container">
         <Reveal className="sec-head experience-head">
           <div className="sec-top">
-            <span className="sec-mark">03 / experience</span>
+            <span className="sec-mark">05 / experience</span>
             <span className="sec-rule" aria-hidden="true" />
           </div>
           <h2 className="sec-title reveal--focus">
@@ -71,7 +69,7 @@ function Experience() {
                 <p className="hand exp-when">{entry.when}</p>
                 <p className="mono-label exp-org">{entry.org}</p>
                 <h3 className="exp-title">{entry.title}</h3>
-                <p className="exp-desc">{entry.desc}</p>
+                {entry.desc ? <p className="exp-desc">{entry.desc}</p> : null}
 
                 {entry.link && (
                   <a
@@ -90,6 +88,9 @@ function Experience() {
 
         <Reveal className="exp-tail">
           <span className="hand">the log continues</span>
+          <figure className="exp-tail-art" aria-hidden="true">
+            <SketchShield />
+          </figure>
         </Reveal>
       </div>
     </section>

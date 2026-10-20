@@ -1,29 +1,38 @@
 /* =========================================================
-   CONCEPT SHEET — a conceptual pencil sketch on paper.
-   Warm paper ground, graphite line work, hand-lettered display,
-   red-pencil accents, margin annotations. The whole site reads
-   like a designer's working drawing. Readability first.
+   DARK ARCHIVE: charcoal ground, aged parchment, graphite lines,
+   hand-lettered display, burgundy pencil notes. Readability first.
    ========================================================= */
 
 :root {
+  color-scheme: dark;
   /* ---- Paper & graphite ---- */
-  --c-paper: #e9e5dc; /* principal paper */
-  --c-paper-2: #ded8cb; /* shaded paper */
-  --c-paper-3: #f2eee5; /* raised paper */
-  --c-paper-edge: #cdc5b4; /* deckle edge */
-  --c-ink: #2f2d29; /* graphite ink */
-  --c-ink-2: #4b473f; /* secondary graphite */
-  --c-ink-3: #6d675c; /* faint graphite */
-  --c-rule: #b3ab98; /* guide lines */
-  --c-graph: #8a8577; /* grid/graphite */
+  --c-paper: #292722; /* warm charcoal — --bg */
+  --c-paper-2: #211f1b; /* dark espresso — --surface */
+  --c-paper-3: #343029; /* raised charcoal — --surface-raised */
+  --c-paper-edge: #514b40; /* graphite edge — --border */
+  --c-parchment: #dccdaa;
+  --c-parchment-light: #efe5d0;
+  --c-parchment-ink: #38342c;
+  --c-ink: #efe5d0; /* warm paper ink — --text-primary */
+  --c-ink-2: #bdb3a0; /* secondary graphite — --text-secondary */
+  --c-ink-3: #a99e88; /* faint graphite */
+  --c-rule: #514b40; /* guide lines — --border */
+  --c-graph: #777064; /* pencil graphite */
 
-  /* accents: red pencil + blueprint blue + highlighter */
-  --c-red: #b8452f;
-  --c-red-2: #93361f;
-  --c-blue: #2f5d8a;
-  --c-blue-2: #24506f;
-  --c-marker: #f2d75c;
-  --c-marker-2: #e8c93f;
+  /* accents: burgundy ink + antique brass — --accent / --accent-strong */
+  --c-red: #b96558;
+  --c-red-2: #985047;
+  --c-blue: #ba9b69; /* --brass */
+  --c-blue-2: #a88a5d;
+  --c-marker: #ba9b69;
+  --c-marker-2: #a88a5d;
+  --wash-top: rgba(239, 229, 208, 0.035);
+  --wash-brass: rgba(186, 155, 105, 0.055);
+  --wash-red: rgba(152, 80, 71, 0.075);
+  --nav-scrim: rgba(47, 45, 41, 0.35);
+  --nav-shadow: rgba(47, 45, 41, 0.6);
+  --c-link-line: rgba(239, 229, 208, 0.3);
+  --sheet-line: rgba(239, 229, 208, 0.2);
 
   /* ---- Layout ---- */
   --maxw: 1140px;
@@ -32,10 +41,25 @@
   --r: 4px;
 
   /* ---- Type ---- */
-  --font-display: "Architects Daughter", "Trebuchet MS", cursive;
-  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Space Mono", "Courier New", monospace;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed",
+    sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
   --font-hand: "Caveat", "Segoe Script", cursive;
+
+  /* Responsive editorial type scale: sized from a 360 px mobile canvas. */
+  --type-hero: clamp(2.75rem, 10vw, 6.5rem);
+  --type-section: clamp(2rem, calc(3.5vw + 1rem), 3.5rem);
+  --type-project: clamp(1.5625rem, calc(2.25vw + 0.8rem), 2.25rem);
+  --type-body: clamp(1rem, calc(0.35vw + 0.95rem), 1.125rem);
+  --type-nav: clamp(0.875rem, calc(0.15vw + 0.875rem), 0.9375rem);
+  --type-meta: clamp(0.6875rem, calc(0.3vw + 0.65rem), 0.875rem);
+  --type-note: clamp(0.9375rem, calc(0.6vw + 0.8rem), 1.25rem);
+  --leading-display: 1.04;
+  --leading-body: 1.72;
+  --tracking-display: -0.035em;
+  --tracking-section: -0.015em;
 
   /* ---- Paper textures ---- */
   --tex-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -44,8 +68,8 @@
   --tex-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M26 0H0V26' fill='none' stroke='%238a8577' stroke-width='0.6' opacity='0.4'/%3E%3C/svg%3E");
 
   /* Hand-drawn squiggle underline */
-  --squiggle-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%23b8452f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-  --squiggle-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%232f5d8a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --squiggle-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%23b96558' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --squiggle-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%23ba9b69' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
 
   /* Back-compat aliases */
   --c-bg: var(--c-paper);
@@ -54,11 +78,42 @@
   --c-paper-lt: var(--c-paper-3);
   --c-ivory: var(--c-ink);
   --c-sand: var(--c-ink-2);
-  --c-brass: var(--c-red);
+  --c-brass: var(--c-blue);
   --c-burg: var(--c-red);
   --c-burg-2: var(--c-red-2);
   --squiggle-gold: var(--squiggle-red);
   --squiggle-burg: var(--squiggle-red);
+}
+
+:root[data-theme="daylight"] {
+  color-scheme: light;
+  --c-paper: #e9dfc7; /* --bg */
+  --c-paper-2: #ded0af; /* --surface */
+  --c-paper-3: #f0e7d3; /* --surface-raised */
+  --c-paper-edge: #b7a98d; /* --border */
+  --c-parchment: #ded0af;
+  --c-parchment-light: #f3e9d3;
+  --c-parchment-ink: #292722;
+  --c-ink: #292722; /* --text-primary */
+  --c-ink-2: #625d52; /* --text-secondary */
+  --c-ink-3: #6b6353;
+  --c-rule: #b7a98d; /* --border */
+  --c-graph: #5c5548; /* --graphite */
+  --c-red: #873b3b; /* --accent */
+  --c-red-2: #6f2d2d; /* --accent-strong */
+  --c-blue: #8d7048; /* --brass */
+  --c-blue-2: #7d653f;
+  --c-marker: #ba9b69;
+  --c-marker-2: #a88a5d;
+  --wash-top: rgba(255, 252, 243, 0.46);
+  --wash-brass: rgba(186, 155, 105, 0.12);
+  --wash-red: rgba(135, 59, 59, 0.035);
+  --nav-scrim: rgba(41, 39, 34, 0.24);
+  --nav-shadow: rgba(41, 39, 34, 0.16);
+  --c-link-line: rgba(47, 45, 41, 0.3);
+  --sheet-line: rgba(47, 45, 41, 0.22);
+  --squiggle-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%23873b3b' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --squiggle-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%2392764a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* ---------- Reset ---------- */
@@ -78,27 +133,25 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
   background-color: var(--c-paper);
-  background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.4),
-      transparent 30%
-    ),
-    radial-gradient(
-      60rem 40rem at 80% -6%,
-      rgba(47, 93, 138, 0.06),
-      transparent 60%
-    ),
-    radial-gradient(
-      48rem 36rem at 8% 40%,
-      rgba(184, 69, 47, 0.05),
-      transparent 62%
-    );
+  background-image: linear-gradient(180deg, var(--wash-top), transparent 30%),
+    radial-gradient(60rem 40rem at 80% -6%, var(--wash-brass), transparent 60%),
+    radial-gradient(48rem 36rem at 8% 40%, var(--wash-red), transparent 62%);
   color: var(--c-ink);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
+  transition: color 0.35s ease, background-color 0.35s ease,
+    background-image 0.35s ease;
+}
+
+*,
+*::before,
+*::after {
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.32s;
+  transition-timing-function: ease;
 }
 
 /* Paper grain */
@@ -139,7 +192,7 @@ button {
 
 ::selection {
   background: var(--c-marker);
-  color: var(--c-ink);
+  color: var(--c-paper-2);
 }
 
 :focus-visible {
@@ -199,7 +252,7 @@ main {
   --fg: var(--c-ink);
   --fg-2: var(--c-ink-2);
   --acc: var(--c-red);
-  --link-line: rgba(47, 45, 41, 0.3);
+  --link-line: var(--c-link-line);
   --line: var(--c-rule);
   --focus: var(--c-red);
 
@@ -234,8 +287,8 @@ main {
   --fg: var(--c-ink);
   --fg-2: var(--c-ink-2);
   --acc: var(--c-red);
-  --link-line: rgba(47, 45, 41, 0.32);
-  --line: rgba(47, 45, 41, 0.22);
+  --link-line: var(--c-link-line);
+  --line: var(--sheet-line);
   --focus: var(--c-red);
 
   position: relative;
@@ -270,14 +323,14 @@ main {
 .stamp-mark {
   font-family: var(--font-mono);
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.08em;
   line-height: 1;
 }
 
 .stamp-text {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.5;
@@ -308,15 +361,16 @@ main {
 
 .mono-label {
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.14em;
+  font-size: var(--type-meta);
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-2);
 }
 
 .hand {
   font-family: var(--font-hand);
-  font-size: 1.25rem;
+  font-size: var(--type-note);
   font-weight: 600;
   line-height: 1.2;
   color: var(--acc);
@@ -327,7 +381,7 @@ main {
 }
 
 .hand--lg {
-  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-size: clamp(1.5rem, 2.6vw, 1.75rem);
 }
 
 .sec-head {
@@ -357,20 +411,23 @@ main {
 .sec-mark {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1.05vw, 0.78rem);
-  letter-spacing: 0.22em;
+  font-size: var(--type-meta);
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-red);
 }
 
 .sec-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.3rem, 5.2vw, 3.7rem);
-  line-height: 1.02;
-  letter-spacing: 0;
+  font-weight: 700;
+  font-size: var(--type-section);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
   color: var(--c-ink);
   max-width: 20ch;
+  text-wrap: balance;
 }
 
 .sec-title .accent {
@@ -402,7 +459,7 @@ main {
   gap: 0.55em;
   font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-ink);
@@ -462,7 +519,8 @@ main {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 0.65s ease,
-    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
   transition-delay: var(--d, 0ms);
 }
 
@@ -489,7 +547,8 @@ main {
   letter-spacing: -0.02em;
   transition: opacity 0.7s ease,
     transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-    letter-spacing 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+    letter-spacing 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    color 0.35s ease, background-color 0.35s ease, border-color 0.35s ease;
   transition-delay: var(--d, 0ms);
 }
 

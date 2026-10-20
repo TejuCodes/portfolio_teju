@@ -21,7 +21,7 @@
   position: relative;
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(1.7rem, 4vw, 2.4rem);
   line-height: 1.05;
   color: var(--c-ink);
@@ -40,8 +40,8 @@
 
 .footer-role {
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-ink-3);
 }
@@ -58,8 +58,8 @@
   gap: 8px;
   padding: 6px 0;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-ink-2);
   transition: color 0.2s ease;
@@ -109,8 +109,8 @@
   gap: 8px;
   padding: 8px 0;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-ink-2);
   transition: color 0.2s ease, transform 0.2s ease;
@@ -125,6 +125,136 @@
 .footer-top-btn:focus-visible {
   color: var(--c-red);
   transform: translateY(-2px);
+}
+
+.footer-last-page {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 17px;
+}
+
+.footer-note-trigger {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 3px;
+  color: var(--c-ink-3);
+  font-family: var(--font-hand);
+  font-size: 17px;
+  font-weight: 600;
+  transform: rotate(-1deg);
+}
+
+.footer-note-trigger:hover,
+.footer-note-trigger:focus-visible,
+.footer-note-trigger[aria-expanded="true"] {
+  color: var(--c-red);
+}
+
+.footer-note-mark {
+  width: 23px;
+  height: 23px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.footer-note-mark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.motion-ready .footer-note-mark path:first-child {
+  stroke-dasharray: 0.22 1;
+  animation: footer-note-pencil 5.8s linear infinite;
+}
+
+@keyframes footer-note-pencil {
+  to {
+    stroke-dashoffset: -1.22;
+  }
+}
+
+.footer-final-note {
+  width: min(390px, calc(100vw - 40px));
+  margin: 4px 0 0 10px;
+  padding: 15px 18px 13px;
+  background: var(--c-parchment);
+  color: var(--c-parchment-ink);
+  box-shadow: 0 7px 18px rgba(33, 31, 27, 0.18);
+  clip-path: polygon(0 1%, 10% 0, 25% 1%, 40% 0, 56% 1%, 71% 0, 87% 1%, 100% 0, 99% 100%, 82% 99%, 65% 100%, 48% 99%, 31% 100%, 15% 99%, 0 100%);
+  transform-origin: top left;
+}
+
+.motion-ready .footer-final-note:not([hidden]) {
+  animation: footer-note-open 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes footer-note-open {
+  from {
+    opacity: 0;
+    transform: translateY(7px) scaleY(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+.footer-final-note[hidden] {
+  display: none;
+}
+
+.footer-note-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #71624d;
+}
+
+.footer-note-copy {
+  margin-top: 4px;
+  color: #38342c;
+  font-family: var(--font-hand);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+.footer-note-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 17px;
+  margin-top: 6px;
+}
+
+.footer-note-actions a,
+.footer-note-actions button {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(135, 59, 59, 0.48);
+  color: #783b36;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.footer-note-actions a:hover,
+.footer-note-actions button:hover,
+.footer-note-actions a:focus-visible,
+.footer-note-actions button:focus-visible {
+  color: #562c28;
+  border-color: #783b36;
 }
 
 @media (max-width: 560px) {

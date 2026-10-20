@@ -15,6 +15,15 @@
   pointer-events: none;
 }
 
+.motion-ready .sketch {
+  transition: transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1),
+    color 0.35s ease;
+}
+
+.motion-ready .sketch:not(.is-inview) {
+  transform: translateY(1.25px) rotate(0.12deg);
+}
+
 .sketch--light {
   color: var(--c-ink-3);
 }
@@ -57,29 +66,12 @@
 .motion-ready .sketch [data-draw] {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur, 1.25s)
+    cubic-bezier(0.4, 0, 0.2, 1) var(--dd, 0.08s);
 }
 
 .motion-ready .sketch.is-inview [data-draw] {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset var(--dur, 1.4s)
-    cubic-bezier(0.4, 0, 0.2, 1) var(--dd, 0.1s);
-}
-
-/* A single quiet hand-settle as the drawing completes. */
-.motion-ready .sketch.is-inview {
-  animation: sk-settle 0.8s ease-out 1;
-}
-
-@keyframes sk-settle {
-  0% {
-    transform: translateY(1.5px) rotate(0.3deg);
-  }
-  60% {
-    transform: translateY(-0.5px) rotate(-0.15deg);
-  }
-  100% {
-    transform: none;
-  }
 }
 
 /*
@@ -139,10 +131,41 @@
   animation-delay: var(--ld, 0s);
 }
 
+/* A soft scan passes through browser and document line art, then fades
+   before it returns to its starting point. Scroll reveals do not affect it. */
+.motion-ready .sketch .loop-scan {
+  transform-box: fill-box;
+  opacity: 0;
+  animation: sk-scan 4.6s ease-in-out infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-scan {
+  0%,
+  8% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.62;
+  }
+  82% {
+    opacity: 0.62;
+  }
+  94%,
+  100% {
+    transform: translateY(var(--ty, 64px));
+    opacity: 0;
+  }
+}
+
 @keyframes sk-ring {
   0% {
     transform: scale(0.6);
-    opacity: 0.6;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.5;
   }
   70% {
     opacity: 0.18;
@@ -218,7 +241,7 @@
     stroke-dashoffset: 0;
   }
   to {
-    stroke-dashoffset: -1.2;
+    stroke-dashoffset: -1.22;
   }
 }
 
@@ -321,6 +344,132 @@
   }
 }
 
+/* Object sketches share one restrained graphite treatment. */
+.cyber-sketch {
+  color: var(--c-ink-2);
+}
+
+.cyber-sketch .cyber-hatch {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  opacity: 0.38;
+}
+
+.cyber-sketch .cyber-detail {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+.cyber-sketch .cyber-micro {
+  fill: currentColor;
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.cyber-sketch .cyber-note {
+  fill: var(--c-red);
+  font-family: var(--font-hand);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.motion-ready .cyber-sketch .cyber-note,
+.motion-ready .cyber-sketch .cyber-micro {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.motion-ready .cyber-sketch.is-inview .cyber-note,
+.motion-ready .cyber-sketch.is-inview .cyber-micro {
+  opacity: 1;
+}
+
+.cyber-sketch .cyber-led {
+  fill: var(--c-red-2);
+  stroke: none;
+}
+
+.cyber-sketch .cyber-led--small {
+  fill: var(--c-brass);
+}
+
+.cyber-sketch .cyber-cursor {
+  fill: var(--c-red-2);
+  stroke: none;
+}
+
+.motion-ready .cyber-sketch .loop-correction {
+  fill: none;
+  stroke: var(--c-graph);
+  stroke-width: 0.9;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: sk-correction 9.2s steps(1, end) infinite;
+  animation-delay: -2.7s;
+}
+
+@keyframes sk-correction {
+  0%,
+  58%,
+  100% {
+    opacity: 0;
+  }
+  62%,
+  82% {
+    opacity: 0.72;
+  }
+}
+
+.motion-ready .cyber-sketch .loop-note {
+  animation: sk-note 8.8s ease-in-out infinite;
+  animation-delay: -1.4s;
+}
+
+@keyframes sk-note {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  17%,
+  68% {
+    opacity: 1;
+  }
+  84% {
+    opacity: 0.42;
+  }
+}
+
+.workspace-pencil {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.cyber-sketch--workspace .cyber-micro {
+  font-size: 6px;
+}
+
+.motion-ready .cyber-sketch .loop-sweep {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sk-sweep 7.6s ease-in-out infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-sweep {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(-1deg);
+  }
+  50% {
+    transform: translate(-2px, 1px) rotate(2deg);
+  }
+}
 .motion-ready .sketch .loop-throb,
 .motion-ready .loop-throb {
   animation: sk-throb 5s ease-in-out infinite;
@@ -369,5 +518,11 @@
   .sketch .loop-ring,
   .sketch .loop-shine {
     opacity: 0 !important;
+  }
+
+  .motion-ready .cyber-sketch .cyber-note,
+  .motion-ready .cyber-sketch .cyber-micro {
+    opacity: 1 !important;
+    transition: none !important;
   }
 }

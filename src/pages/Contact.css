@@ -36,7 +36,7 @@
   margin-top: clamp(24px, 3vw, 34px);
   padding-bottom: 6px;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   font-size: clamp(1.3rem, 4vw, 2.3rem);
   line-height: 1.1;
   color: var(--c-ink);
@@ -80,8 +80,8 @@
 .contact-num {
   padding-top: 18px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   color: var(--c-ink-3);
   transition: color 0.25s ease;
 }
@@ -100,7 +100,7 @@
 
 .contact-label-text {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   font-size: clamp(1.35rem, 3.4vw, 1.9rem);
   line-height: 1.1;
   color: var(--c-ink);
@@ -146,7 +146,7 @@
 
 .contact-signature {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(2rem, 5vw, 2.8rem);
   line-height: 1;
   color: var(--c-ink);
@@ -198,7 +198,7 @@
 
 .contact-quote p {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(1.2rem, 2.6vw, 1.5rem);
   line-height: 1.36;
   color: var(--c-ink-2);

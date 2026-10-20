@@ -67,15 +67,16 @@
 }
 
 .exp-org {
-  font-size: 10px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   color: var(--c-ink-3);
 }
 
 .exp-title {
   margin-top: 4px;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   font-size: clamp(1.5rem, 2.6vw, 1.95rem);
   line-height: 1.1;
   color: var(--c-ink);
@@ -85,22 +86,35 @@
 .exp-desc {
   margin-top: 6px;
   max-width: 46ch;
-  font-size: 15px;
-  line-height: 1.68;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
   color: var(--c-ink-2);
 }
 
 .exp-link {
   margin-top: 12px;
   justify-self: start;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .exp-tail {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 18px;
   margin-top: clamp(34px, 5vw, 52px);
   padding-right: clamp(0px, 6vw, 80px);
+}
+
+.exp-tail-art {
+  width: clamp(104px, 15vw, 150px);
+  color: var(--c-ink-3);
+  opacity: 0.85;
+  transform: rotate(-1deg);
+}
+
+.exp-tail-art .sketch {
+  width: 100%;
 }
 
 .exp-tail .hand {
@@ -136,6 +150,10 @@
     justify-content: flex-start;
     padding-left: 42px;
   }
+
+  .exp-tail-art {
+    width: min(32vw, 128px);
+  }
 }
 
 @media (max-width: 560px) {
@@ -158,5 +176,6 @@
 
   .exp-tail {
     padding-left: 34px;
+    gap: 10px;
   }
 }

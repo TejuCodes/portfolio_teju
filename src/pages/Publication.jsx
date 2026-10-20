@@ -17,7 +17,7 @@ function Publication() {
       <div className="container">
         <Reveal className="sec-head publication-head">
           <div className="sec-top">
-            <span className="sec-mark">06 / publication</span>
+            <span className="sec-mark">research note</span>
             <span className="sec-rule" aria-hidden="true" />
           </div>
           <h2 className="sec-title reveal--focus">Publication</h2>

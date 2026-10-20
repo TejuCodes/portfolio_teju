@@ -86,7 +86,8 @@
 
 .about-facts-title {
   font-family: var(--font-hand);
-  font-size: 1.4rem;
+  font-size: var(--type-note);
+  font-weight: 600;
   color: var(--c-red);
   margin-bottom: 16px;
   transform: rotate(-1.6deg);
@@ -104,14 +105,15 @@
 
 .about-fact dt {
   font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-ink-3);
 }
 
 .about-fact dd {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.45;
   color: var(--c-ink);
 }
@@ -180,6 +182,28 @@
   border-top: 1px solid var(--c-rule);
 }
 
+.about-interest-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.42fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+.about-interest-layout .interest-list {
+  max-width: none;
+}
+
+.about-interest-layout .about-hack-art {
+  width: 100%;
+  max-width: 250px;
+  margin: 0;
+  transform: rotate(1deg);
+}
+
+.about-hack-art .cyber-sketch {
+  color: var(--c-ink-3);
+}
+
 .interest-item {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -191,8 +215,8 @@
 
 .interest-num {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   color: var(--c-ink-3);
   transition: color 0.25s ease;
 }
@@ -205,7 +229,7 @@
   position: relative;
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(1.25rem, 2.4vw, 1.6rem);
   line-height: 1.16;
   color: var(--c-ink);
@@ -245,6 +269,12 @@
   transform: rotate(-1deg);
 }
 
+.skill-index-label {
+  display: block;
+  margin: 27px 0 15px;
+  color: var(--c-ink-3);
+}
+
 /* ---- Skills, written out ---- */
 
 .skill-groups {
@@ -259,8 +289,8 @@
   align-items: center;
   gap: 14px;
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.3rem;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   color: var(--c-ink);
   margin-bottom: 12px;
 }
@@ -280,7 +310,8 @@
 
 .skill-list li {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.04em;
   color: var(--c-ink-2);
 }
@@ -340,6 +371,17 @@
 
   .interest-list {
     grid-template-columns: 1fr;
+  }
+
+  .about-interest-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .about-interest-layout .about-hack-art {
+    width: min(100%, 230px);
+    max-width: none;
+    margin-inline: auto;
   }
 
   .about-annotation {

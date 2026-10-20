@@ -1,36 +1,31 @@
 import Reveal from "./Reveal";
 import { DoodleUnderline } from "./sketches/Sketches";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import "./ProjectCard.css";
 
-/**
- * One project = one case file.
- * Every project uses this exact component: same paper treatment, heading
- * typography, content order, badge row, annotation and illustration slot.
- * Only the copy, technologies and artwork differ.
- */
+/** One reusable, content-first case file for every project. */
 export default function ProjectCard({
+  id,
   index,
   title,
   problem,
   description,
   stack = [],
   note,
+  links = [],
   art: Art,
   featured = false,
-  rotation = "-0.5deg",
   delay = 0,
 }) {
   return (
     <Reveal
       as="article"
+      id={id}
       className={`project ${featured ? "project--featured" : ""}`}
       delay={delay}
-      style={{ "--r": rotation }}
     >
       <div className="project__head">
-        <span className="project__index" aria-hidden="true">
-          {index}
-        </span>
+        <span className="project__index" aria-hidden="true">{index}</span>
         <p className="mono-label project__label">
           case file
           {featured ? <span className="project__flag">featured</span> : null}
@@ -45,22 +40,44 @@ export default function ProjectCard({
             <DoodleUnderline className="project__ink" />
           </h3>
 
-          <p className="project__problem">
-            <span className="hand project__key">problem —</span>
-            {problem}
-          </p>
-
           <p className="project__desc">{description}</p>
+
+          {problem ? (
+            <p className="project__problem">
+              <span className="hand project__key">{"problem \u2014"}</span>
+              {problem}
+            </p>
+          ) : null}
 
           <ul className="tech" aria-label={`Technologies used in ${title}`}>
             {stack.map((tech) => (
-              <li className="badge" key={tech}>
-                {tech}
-              </li>
+              <li className="badge" key={tech}>{tech}</li>
             ))}
           </ul>
 
-          <p className="hand project__note">{note}</p>
+          {note ? <p className="hand project__note">{note}</p> : null}
+
+          {links.length > 0 ? (
+            <ul className="project__links" aria-label={`Links for ${title}`}>
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    className="project__link"
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                    {link.icon === "github" ? (
+                      <FaGithub aria-hidden="true" />
+                    ) : (
+                      <FaExternalLinkAlt aria-hidden="true" />
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
 
         <div className="project__art" aria-hidden="true">

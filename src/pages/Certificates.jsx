@@ -5,11 +5,8 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import {
   DoodleUnderline,
   DoodleArrow,
-  SketchDocs,
-  SketchCertificate,
 } from "../components/sketches/Sketches";
 
-const featured = certificates.find((cert) => cert.issuer === "TryHackMe");
 const rows = certificates.filter((cert) => cert.issuer !== "TryHackMe");
 
 const issuerMarks = {
@@ -26,7 +23,6 @@ const issuerCount = new Set(certificates.map((cert) => cert.issuer)).size;
 const recordStats = [
   { label: "credentials", value: String(certificates.length).padStart(2, "0") },
   { label: "issuers", value: String(issuerCount).padStart(2, "0") },
-  { label: "year active", value: "2024" },
 ];
 
 function Certificates() {
@@ -35,7 +31,7 @@ function Certificates() {
       <div className="container">
         <Reveal className="sec-head certs-head">
           <div className="sec-top">
-            <span className="sec-mark">04 / certifications</span>
+            <span className="sec-mark">03 / certifications</span>
             <span className="sec-rule" aria-hidden="true" />
           </div>
           <h2 className="sec-title reveal--focus">

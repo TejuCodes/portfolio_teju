@@ -1,0 +1,221 @@
+.skill-signature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(245px, 0.8fr);
+  align-items: center;
+  gap: clamp(22px, 4vw, 44px);
+}
+
+.skill-object-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.skill-object-button {
+  position: relative;
+  display: grid;
+  grid-template-rows: 68px auto;
+  align-content: center;
+  justify-items: center;
+  gap: 5px;
+  min-width: 0;
+  min-height: 112px;
+  padding: 7px 3px 10px;
+  border-bottom: 1px dashed var(--c-rule);
+  color: var(--c-ink-2);
+  text-align: center;
+  transition: color 0.22s ease, border-color 0.22s ease;
+}
+
+.skill-object-button:hover,
+.skill-object-button.is-selected {
+  color: var(--c-red);
+  border-color: var(--c-red);
+}
+
+.skill-object-art {
+  position: relative;
+  display: grid;
+  width: min(100%, 82px);
+  height: 68px;
+  place-items: center;
+}
+
+.skill-object-art .skill-sketch {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--c-graph);
+  transition: color 0.2s ease, transform 0.35s ease;
+}
+
+.skill-object-button:hover .skill-sketch,
+.skill-object-button.is-selected .skill-sketch {
+  color: var(--c-ink);
+  transform: translateY(-1px);
+}
+
+.skill-object-art .skill-select-stroke {
+  fill: none;
+  stroke: var(--c-red);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.skill-object-button.is-selected .skill-select-stroke {
+  animation: skill-pencil-mark 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes skill-pencil-mark {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.95;
+  }
+}
+
+.skill-object-underline {
+  position: absolute;
+  right: 2px;
+  bottom: -1px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: 8px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.skill-object-underline path {
+  fill: none;
+  stroke: var(--c-red);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: skill-pencil-mark 0.75s ease-out forwards;
+}
+
+.skill-object-label {
+  max-width: 12ch;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.skill-object-index {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--c-ink-3);
+}
+
+.skill-object-button.is-selected .skill-object-index {
+  color: var(--c-red);
+}
+
+.skill-note {
+  position: relative;
+  min-height: 168px;
+  padding: 15px 19px 16px;
+  border-left: 2px solid var(--c-red);
+  background: var(--c-parchment);
+  color: var(--c-parchment-ink);
+  box-shadow: 0 6px 16px rgba(33, 31, 27, 0.13);
+  clip-path: polygon(0 1%, 8% 0, 17% 1%, 29% 0, 43% 1%, 58% 0, 75% 1%, 88% 0, 100% 1%, 99.5% 100%, 86% 99%, 72% 100%, 58% 99%, 41% 100%, 24% 99%, 11% 100%, 0 99%);
+}
+
+.skill-note-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6d5c49;
+}
+
+.skill-note h3 {
+  margin-top: 5px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.1vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #292722;
+}
+
+.skill-note-copy {
+  margin-top: 7px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.48;
+  color: #514b40;
+}
+
+.skill-note-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 9px;
+}
+
+.skill-note-link {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border-bottom: 1px solid rgba(135, 59, 59, 0.48);
+  color: #783b36;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+}
+
+.skill-note-link:hover,
+.skill-note-link:focus-visible {
+  border-color: #783b36;
+  color: #562c28;
+}
+
+@media (max-width: 900px) {
+  .skill-signature {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-note {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .skill-object-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px 10px;
+  }
+
+  .skill-object-button {
+    grid-template-rows: 64px auto;
+    min-height: 104px;
+  }
+
+  .skill-object-art {
+    height: 64px;
+  }
+
+  .skill-note {
+    padding: 14px 16px 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-object-button.is-selected .skill-select-stroke,
+  .skill-object-underline path {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}

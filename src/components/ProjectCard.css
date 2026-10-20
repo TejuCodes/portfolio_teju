@@ -1,176 +1,271 @@
-/* ==========================================================================
-   Project — a case-file entry, not a card. Rule-topped, numbered, open.
-   Mobile-first: base rules describe a phone, then larger screens add the
-   two-column composition.
-   ========================================================================== */
-
+/* A shared parchment case file. The same torn edge frames every project. */
 .project {
+  --project-ink: #38342c;
+  --project-ink-soft: #5b5549;
+  --project-graphite: #625b4f;
+  --project-rule: rgba(56, 52, 44, 0.28);
   position: relative;
+  isolation: isolate;
   width: 100%;
-  padding-top: 20px;
+  padding: 23px clamp(19px, 4.5vw, 42px) 26px;
+  color: var(--project-ink);
+  background-color: var(--c-parchment);
+  background-image:
+    linear-gradient(118deg, rgba(255, 255, 255, 0.17), transparent 42%),
+    linear-gradient(0deg, rgba(70, 57, 37, 0.035), transparent 34%);
+  clip-path: polygon(
+    0.2% 0.55%, 2.4% 0.28%, 4.1% 0.68%, 6.8% 0.32%, 9.1% 0.62%,
+    12.6% 0.26%, 16.2% 0.61%, 20.8% 0.31%, 25.4% 0.72%, 30.7% 0.28%,
+    36.5% 0.64%, 42.8% 0.32%, 48.9% 0.7%, 55.6% 0.27%, 62.3% 0.63%,
+    69.4% 0.31%, 76.2% 0.69%, 83.5% 0.26%, 90.2% 0.66%, 95.4% 0.3%,
+    99.8% 0.58%, 99.5% 99.38%, 96.8% 99.68%, 93.2% 99.32%, 89.1% 99.72%,
+    84.5% 99.35%, 79.2% 99.66%, 73.4% 99.3%, 67.1% 99.68%, 60.5% 99.34%,
+    53.8% 99.72%, 47.2% 99.3%, 40.7% 99.67%, 34.4% 99.32%, 28.2% 99.7%,
+    22.1% 99.31%, 16.4% 99.66%, 11.2% 99.34%, 7.2% 99.68%, 3.4% 99.3%,
+    0.4% 99.62%
+  );
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.24));
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--tex-noise);
+  background-size: 260px 260px;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 .project__head {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 11px;
+  margin-bottom: 17px;
 }
 
 .project__index {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-family: var(--font-mono);
+  font-size: var(--type-meta);
+  letter-spacing: 0.08em;
   line-height: 1;
-  color: var(--c-ink-3);
+  color: var(--project-graphite);
 }
 
 .project--featured .project__index {
-  color: var(--c-red);
+  color: var(--c-red-2);
 }
 
 .project__label {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 10px;
-  color: var(--c-ink-3);
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--project-ink-soft);
 }
 
 .project__flag {
-  padding: 2px 8px;
-  font-size: 8.5px;
-  letter-spacing: 0.16em;
-  color: var(--c-paper);
-  background: var(--c-red-2);
+  padding: 2px 7px;
+  border: 1px solid var(--c-red-2);
+  color: var(--c-red-2);
+  font-size: 11px;
+  letter-spacing: 0.08em;
 }
 
 .project__rule {
   flex: 1;
   height: 1px;
-  background: var(--c-rule);
+  background: var(--project-rule);
 }
 
 .project__body {
   display: grid;
-  gap: 20px;
+  gap: 14px;
+}
+
+.project__copy {
+  min-width: 0;
 }
 
 .project__title {
   position: relative;
   display: inline-block;
+  max-width: 100%;
+  padding-bottom: 5px;
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.08;
-  font-size: clamp(1.5rem, 7vw, 2rem);
-  color: var(--c-ink);
-  overflow-wrap: anywhere;
+  font-weight: 700;
+  font-size: var(--type-project);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--project-ink);
+  text-wrap: balance;
 }
 
 .project__ink {
-  position: absolute;
-  left: 0;
-  bottom: -9px;
-  width: 84%;
-  max-width: 250px;
-  color: var(--c-red);
-  opacity: 0;
-  transform: scaleX(0.35);
+  display: block;
+  width: min(88%, 250px);
+  height: auto;
+  margin-top: 1px;
+  color: var(--c-red-2);
+  opacity: 0.67;
   transform-origin: left center;
-  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
-  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.4s ease;
 }
 
 .project:hover .project__ink,
 .project:focus-within .project__ink {
-  opacity: 1;
-  transform: scaleX(1);
+  opacity: 0.95;
+  transform: scaleX(1.04);
 }
 
+.project__desc,
 .project__problem {
-  margin-top: 16px;
-  max-width: 54ch;
-  font-size: 15px;
-  line-height: 1.62;
-  color: var(--c-ink-2);
-}
-
-.project__key {
-  margin-right: 0.4em;
-  font-size: 1.12rem;
-  color: var(--c-red);
+  max-width: 56ch;
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
+  color: var(--project-ink-soft);
 }
 
 .project__desc {
-  margin-top: 9px;
-  max-width: 56ch;
-  font-size: 15px;
-  line-height: 1.66;
-  color: var(--c-ink-2);
+  margin-top: 7px;
 }
 
-.project__note {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: var(--c-red);
-  transform: rotate(-1.2deg);
+.project__problem {
+  margin-top: 8px;
 }
 
-/* ---- Technology badges: plain mono tags, hairline framed ---- */
+.project .project__key {
+  margin-right: 0.45em;
+  font-size: 1.08rem;
+  color: var(--c-red-2);
+}
 
 .tech {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 17px;
+  list-style: none;
 }
 
 .badge {
+  position: relative;
   display: inline-flex;
+  min-height: 34px;
   align-items: center;
-  padding: 3px 0;
+  gap: 7px;
+  padding: 5px 10px 7px;
+  border: 1px solid rgba(56, 52, 44, 0.35);
+  border-radius: 2px 2px 3px 1px;
+  background: rgba(239, 229, 208, 0.36);
+  color: #514b40;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-ink-2);
-  transition: color 0.25s ease, transform 0.25s ease;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.045em;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .badge::before {
-  content: "/";
-  margin-right: 7px;
-  color: var(--c-red);
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border: 1px solid var(--c-red-2);
+  border-radius: 50%;
+  opacity: 0.82;
 }
 
-.badge + .badge {
-  padding-left: 8px;
-  border-left: 1px solid var(--c-rule);
+.badge::after {
+  content: "";
+  position: absolute;
+  right: 7px;
+  bottom: 2px;
+  left: 7px;
+  height: 4px;
+  background: var(--squiggle-red) no-repeat left center / 100% 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s ease;
 }
 
 .badge:hover {
-  color: var(--c-red);
   transform: translateY(-2px);
+  border-color: var(--c-red-2);
+  background-color: rgba(255, 249, 235, 0.54);
+  color: #382f29;
 }
 
-/* ---- Illustration slot ---- */
+.badge:hover::after {
+  transform: scaleX(1);
+}
+
+.project .project__note {
+  width: fit-content;
+  margin-top: 17px;
+  color: var(--c-red-2);
+  font-size: 1.12rem;
+  transform: rotate(-1deg);
+}
+
+.project__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 14px;
+}
+
+.project__link {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(56, 52, 44, 0.38);
+  color: #403a31;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.project__link:hover,
+.project__link:focus-visible {
+  border-color: var(--c-red-2);
+  color: var(--c-red-2);
+}
 
 .project__art {
-  width: min(150px, 46%);
-  margin-left: auto;
-  transition: transform 0.5s ease;
+  width: min(220px, 72%);
+  aspect-ratio: 4 / 3;
+  margin: 3px auto 0;
+  transform-origin: center;
+  transition: transform 0.45s ease;
 }
 
 .project__art .sketch {
-  color: var(--c-ink-2);
+  width: 100%;
+  height: 100%;
+}
+
+.project__art .sketch {
+  color: #625b4f;
 }
 
 .project__art .sketch .hatch {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .project__art .sketch .accent-stroke {
-  stroke: var(--c-red);
+  stroke: var(--c-red-2);
 }
 
 .project__art .sketch .loop-trace,
@@ -179,53 +274,44 @@
 .project__art .sketch .loop-packet,
 .project__art .sketch .loop-march,
 .project__art .sketch .loop-ring {
-  stroke: var(--c-blue);
+  stroke: var(--c-red-2);
 }
 
 .project:hover .project__art {
-  transform: translateY(-4px) rotate(-1.2deg);
+  transform: translateY(-3px) rotate(-0.7deg);
 }
 
-/* ==========================================================================
-   Tablet and up: copy and illustration sit side by side.
-   ========================================================================== */
-
-@media (min-width: 820px) {
+@media (min-width: 760px) {
   .project {
-    padding-top: 26px;
+    padding: 28px clamp(27px, 4vw, 44px) 30px;
+  }
+
+  .project__head {
+    margin-bottom: 19px;
   }
 
   .project__body {
-    grid-template-columns: minmax(0, 1fr) clamp(180px, 22vw, 248px);
-    gap: clamp(24px, 4vw, 52px);
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) clamp(175px, 23vw, 226px);
+    align-items: center;
+    gap: clamp(24px, 4vw, 50px);
+  }
+
+  .project__title {
+    font-size: var(--type-project);
   }
 
   .project__art {
     width: 100%;
-    margin: -4px 0 0;
+    max-width: 220px;
+    margin: 0;
     justify-self: end;
-  }
-
-  .project__title {
-    font-size: clamp(1.8rem, 2.6vw, 2.35rem);
-  }
-
-  .project--featured .project__title {
-    font-size: clamp(2.05rem, 3.1vw, 2.9rem);
-  }
-
-  .project--featured .project__desc {
-    font-size: 15.5px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project__ink {
+  .project__ink,
+  .project__art,
+  .badge {
     transition: none;
-  }
-
-  .project:hover .project__art {
-    transform: none;
   }
 }

@@ -31,28 +31,6 @@
   color: var(--c-blue);
 }
 
-/* ---- Portrait, faint, behind the type ---- */
-
-.hero-portrait {
-  position: absolute;
-  top: 2%;
-  right: clamp(-50px, -2vw, -10px);
-  width: clamp(180px, 23vw, 290px);
-  z-index: 0;
-  transform: rotate(1.4deg);
-  opacity: 0.5;
-  -webkit-mask-image: linear-gradient(#000 60%, transparent 100%);
-  mask-image: linear-gradient(#000 60%, transparent 100%);
-}
-
-.hero-portrait .sketch {
-  color: var(--c-ink-3);
-}
-
-.hero-portrait .sketch .hatch {
-  opacity: 0.4;
-}
-
 /* ---- Open editorial masthead (no box) ---- */
 
 .hero-sheet {
@@ -68,7 +46,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10.5px;
+  font-family: var(--font-mono);
+  font-size: var(--type-meta);
+  font-weight: 400;
+  letter-spacing: 0.1em;
   color: var(--c-ink-3);
   margin-bottom: clamp(18px, 3vw, 26px);
   padding-left: clamp(0px, 3vw, 44px);
@@ -82,11 +63,12 @@
 
 .hero-name {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.9rem, 8vw, 5.6rem);
+  font-weight: 800;
+  font-size: var(--type-hero);
   line-height: 0.98;
-  letter-spacing: 0;
+  letter-spacing: var(--tracking-display);
   color: var(--c-ink);
+  text-wrap: balance;
 }
 
 .hero-initial {
@@ -114,9 +96,9 @@
 .hero-role {
   margin-top: clamp(24px, 3.4vw, 34px);
   font-family: var(--font-mono);
-  font-size: clamp(10.5px, 1.2vw, 12px);
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-size: var(--type-meta);
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-ink-2);
 }
@@ -129,7 +111,7 @@
 .hero-lede {
   margin-top: 16px;
   max-width: 50ch;
-  font-size: clamp(15.5px, 1.4vw, 17px);
+  font-size: clamp(1rem, 1.4vw, 17px);
   line-height: 1.74;
   color: var(--c-ink-2);
 }
@@ -157,7 +139,7 @@
 
 .hero-monitor {
   position: absolute;
-  left: clamp(-56px, -3vw, -8px);
+  right: clamp(0px, 1vw, 12px);
   bottom: -6%;
   width: clamp(180px, 26vw, 326px);
   z-index: 3;
@@ -166,6 +148,17 @@
 
 .hero-monitor .sketch .hatch {
   opacity: 0.42;
+}
+
+.hero-workspace .sketch {
+  color: var(--c-ink-2);
+  transition: transform 0.45s ease, color 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-workspace:hover .sketch {
+    transform: translateY(-2px) rotate(-0.3deg);
+  }
 }
 
 .hero-notes {
@@ -184,7 +177,8 @@
 
 .hero-notes-title {
   font-family: var(--font-hand);
-  font-size: 1.4rem;
+  font-size: var(--type-note);
+  font-weight: 600;
   color: var(--c-red);
   transform: rotate(-1.6deg);
 }
@@ -201,21 +195,22 @@
 
 .hero-note-list dt {
   font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.16em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-ink-3);
 }
 
 .hero-note-list dd {
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.4;
   color: var(--c-ink-2);
 }
 
 .hero-notes-tail {
   font-family: var(--font-hand);
-  font-size: 1.02rem;
+  font-size: var(--type-note);
+  font-weight: 600;
   color: var(--c-red);
   transform: rotate(-1deg);
 }
@@ -251,17 +246,12 @@
 
 @media (max-width: 1080px) {
   .hero-sheet {
-    width: min(662px, 96%);
+    width: min(590px, 64%);
     margin-left: 0;
   }
 
   .hero-eyebrow {
     padding-left: 0;
-  }
-
-  .hero-portrait {
-    width: clamp(160px, 21vw, 226px);
-    opacity: 0.4;
   }
 
   .hero-notes {
@@ -271,10 +261,6 @@
 }
 
 @media (max-width: 900px) {
-  .hero-portrait {
-    display: none;
-  }
-
   .hero-sheet {
     width: 100%;
   }
@@ -304,13 +290,19 @@
 }
 
 @media (max-width: 560px) {
+  .hero-circle {
+    top: -0.14em;
+    left: -0.18em;
+    width: 1.5em;
+  }
+
   .hero-name {
-    font-size: clamp(2.5rem, 14vw, 3.8rem);
+    font-size: var(--type-hero);
   }
 
   .hero-role {
-    font-size: 10.5px;
-    letter-spacing: 0.12em;
+    font-size: 12px;
+    letter-spacing: 0.09em;
   }
 
   .hero-note-list {
@@ -318,6 +310,14 @@
   }
 
   .hero-monitor {
-    width: 170px;
+    width: clamp(208px, 58vw, 232px);
+  }
+
+  .hero-mark {
+    font-size: 1rem;
+  }
+
+  .hero-mark > span {
+    display: none;
   }
 }

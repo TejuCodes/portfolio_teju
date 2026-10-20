@@ -5,6 +5,8 @@ import {
   DoodleCircle,
   DoodleUnderline,
 } from "../components/sketches/Sketches";
+import { SketchSecurityNotebook } from "../components/sketches/CyberSketches";
+import SkillSignature from "../components/SkillSignature";
 
 const interests = [
   "Penetration Testing",
@@ -145,20 +147,29 @@ function About() {
 
         <Reveal className="about-block about-interests">
           <p className="hand about-block-title">interests</p>
-          <ul className="interest-list">
-            {interests.map((item, idx) => (
-              <li key={item} className="interest-item">
-                <span className="interest-num" aria-hidden="true">
-                  {String(idx + 1).padStart(2, "0")}
-                </span>
-                <span className="interest-text">{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="about-interest-layout">
+            <ul className="interest-list">
+              {interests.map((item, idx) => (
+                <li key={item} className="interest-item">
+                  <span className="interest-num" aria-hidden="true">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <span className="interest-text">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Reveal as="figure" className="about-hack-art" delay={100} aria-hidden="true">
+              <SketchSecurityNotebook />
+            </Reveal>
+          </div>
         </Reveal>
 
         <Reveal className="about-block about-skills">
           <p className="hand about-block-title">technical skills</p>
+
+          <SkillSignature />
+
+          <p className="mono-label skill-index-label">tools and topics / index</p>
 
           <div className="skill-groups">
             {skillGroups.map((group) => (

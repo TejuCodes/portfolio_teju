@@ -8,12 +8,21 @@
       name="description"
       content="Tejashwin S. — cybersecurity student and aspiring security engineer. A conceptual pencil-sketch portfolio of projects, certifications, training and contact."
     />
-    <meta name="theme-color" content="#e9e5dc" />
+    <meta name="theme-color" content="#292722" />
+    <script>
+      try {
+        if (localStorage.getItem("teju-theme") === "daylight") {
+          document.documentElement.dataset.theme = "daylight";
+        }
+      } catch {
+        /* The dark theme remains available when storage is disabled. */
+      }
+    </script>
     <title>Tejashwin S. — Cybersecurity Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Nunito+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
