@@ -1,0 +1,373 @@
+/* =========================================================
+   LINE ART — graphite pencil on paper.
+   Motion is editorial, not decorative: strokes draw themselves
+   once when discovered, then the drawing holds still. Only a
+   couple of quiet ambient details remain alive.
+   ========================================================= */
+
+.sketch {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--c-ink-2);
+  /* Decorative artwork: never intercept clicks or keyboard focus. */
+  pointer-events: none;
+}
+
+.sketch--light {
+  color: var(--c-ink-3);
+}
+
+.sketch .accent-stroke {
+  stroke: var(--c-red);
+}
+
+.sketch--light .accent-stroke {
+  stroke: var(--c-blue);
+}
+
+.sketch .dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.sketch .hatch {
+  stroke-width: 0.85;
+  opacity: 0.42;
+}
+
+.sketch--light .hatch {
+  opacity: 0.5;
+}
+
+.sketch path,
+.sketch circle,
+.sketch ellipse,
+.sketch line,
+.sketch rect,
+.sketch polyline {
+  vector-effect: non-scaling-stroke;
+}
+
+/* ------------------------------------------------------------------
+   The signature motion: an invisible pencil draws every stroke once
+   when the drawing is discovered (pathLength="1" + dashoffset).
+   ------------------------------------------------------------------ */
+.motion-ready .sketch [data-draw] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.motion-ready .sketch.is-inview [data-draw] {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--dur, 1.4s)
+    cubic-bezier(0.4, 0, 0.2, 1) var(--dd, 0.1s);
+}
+
+/* A single quiet hand-settle as the drawing completes. */
+.motion-ready .sketch.is-inview {
+  animation: sk-settle 0.8s ease-out 1;
+}
+
+@keyframes sk-settle {
+  0% {
+    transform: translateY(1.5px) rotate(0.3deg);
+  }
+  60% {
+    transform: translateY(-0.5px) rotate(-0.15deg);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/*
+ * Ambient motion is deliberately sparse. Most marks are static;
+ * the few that move do so slowly and softly, like a pencil resting
+ * on the page. All of it is removed by the reduced-motion block below.
+ */
+
+/* One slow, soft breathe — reserved for a single focal point per drawing. */
+.motion-ready .sketch .loop-pulse {
+  animation: sk-pulse var(--ld, 4.2s) ease-in-out infinite;
+}
+
+@keyframes sk-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* A cursor blinking in a drawn screen. */
+.motion-ready .sketch .loop-blink {
+  animation: sk-blink 1.2s steps(1, end) infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-blink {
+  0%,
+  54% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Highlight-only details stay invisible until motion is allowed,
+   and only ever appear on the one drawing that needs them. */
+.sketch .loop-trace,
+.sketch .loop-scan,
+.sketch .loop-travel,
+.sketch .loop-packet,
+.sketch .loop-march,
+.sketch .loop-ring,
+.sketch .loop-shine {
+  opacity: 0;
+}
+
+.motion-ready .sketch .loop-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sk-ring 3.4s ease-out infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-ring {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* A tick travelling once along a link. */
+.motion-ready .sketch .loop-travel {
+  opacity: 1;
+  animation: sk-travel var(--ld, 5s) cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+@keyframes sk-travel {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.9;
+  }
+  86% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(var(--tx, 44px));
+    opacity: 0;
+  }
+}
+
+/* A packet moving between two nodes. */
+.motion-ready .sketch .loop-packet {
+  opacity: 1;
+  animation: sk-packet var(--ld, 5.2s) ease-in-out infinite;
+}
+
+@keyframes sk-packet {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  33% {
+    transform: translate(46px, 12px);
+  }
+  66% {
+    transform: translate(94px, 12px);
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(140px, 0);
+    opacity: 0;
+  }
+}
+
+/* A pencil re-tracing one line. */
+.motion-ready .sketch .loop-trace {
+  opacity: 1;
+  stroke-dasharray: 0.22 1;
+  animation: sk-trace 5.6s linear infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-trace {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1.2;
+  }
+}
+
+/* Stitches marching once along a seam. */
+.motion-ready .sketch .loop-march {
+  opacity: 1;
+  stroke-dasharray: 5 7;
+  animation: sk-march 2.4s linear infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-march {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Legacy loop hooks kept as no-ops or gently retired. These classes may
+   still be referenced in markup; they now render as still details rather
+   than neon animation, keeping the page composed and quiet.
+   -------------------------------------------------------------------------- */
+
+.motion-ready .sketch .loop-typing {
+  animation: sk-typing var(--lt, 6.5s) steps(1, end) infinite both;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-typing {
+  0%,
+  9% {
+    opacity: 0;
+  }
+  15%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.motion-ready .sketch .loop-orbit {
+  transform-origin: var(--ox, 50%) var(--oy, 50%);
+  animation: sk-orbit var(--lt, 14s) linear infinite;
+}
+
+@keyframes sk-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.motion-ready .sketch .loop-wave {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: sk-wave 4.2s ease-in-out infinite;
+}
+
+@keyframes sk-wave {
+  0%,
+  100% {
+    transform: skewX(0deg) scaleX(1);
+  }
+  50% {
+    transform: skewX(-2.5deg) scaleX(0.99);
+  }
+}
+
+.motion-ready .sketch .loop-drift {
+  animation: sk-drift var(--lt, 9s) ease-in-out infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(1.5px, -3px) rotate(4deg);
+  }
+}
+
+.motion-ready .sketch .loop-flicker,
+.motion-ready .loop-flicker {
+  animation: sk-flicker 6.6s steps(1, end) infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.45;
+  }
+  46%,
+  72%,
+  76% {
+    opacity: 1;
+  }
+}
+
+.motion-ready .sketch .loop-throb,
+.motion-ready .loop-throb {
+  animation: sk-throb 5s ease-in-out infinite;
+  animation-delay: var(--ld, 0s);
+}
+
+@keyframes sk-throb {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Retired: no more chroma/grain shimmer, no more bubbles. */
+.motion-ready .sketch .loop-chroma,
+.motion-ready .loop-chroma,
+.motion-ready .sketch .loop-shine {
+  animation: none;
+}
+
+/* Reduced motion: fully drawn, fully still. */
+@media (prefers-reduced-motion: reduce) {
+  .sketch [data-draw] {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+
+  .motion-ready .sketch.is-inview {
+    animation: none !important;
+  }
+
+  [class*="loop-"] {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .sketch .loop-trace,
+  .sketch .loop-scan,
+  .sketch .loop-travel,
+  .sketch .loop-packet,
+  .sketch .loop-march,
+  .sketch .loop-ring,
+  .sketch .loop-shine {
+    opacity: 0 !important;
+  }
+}

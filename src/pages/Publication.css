@@ -1,0 +1,48 @@
+.publication-head {
+  text-align: center;
+}
+
+.pub-list {
+  list-style: none;
+  margin-top: 42px;
+  display: grid;
+  gap: 34px;
+}
+
+.pub-entry {
+  max-width: 66ch;
+  padding-left: 22px;
+  border-left: 1.5px solid var(--c-red);
+}
+
+.pub-type {
+  font-size: 9.5px;
+  color: var(--c-ink-3);
+  margin-bottom: 8px;
+}
+
+.pub-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  line-height: 1.2;
+  color: var(--c-ink);
+}
+
+.pub-authors {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: var(--c-ink-2);
+}
+
+.pub-tail {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.pub-tail .hand {
+  font-size: 1.1rem;
+  color: var(--c-red);
+}

@@ -1,165 +1,537 @@
-/* ===========================
-Google Font
-=========================== */
+/* =========================================================
+   CONCEPT SHEET — a conceptual pencil sketch on paper.
+   Warm paper ground, graphite line work, hand-lettered display,
+   red-pencil accents, margin annotations. The whole site reads
+   like a designer's working drawing. Readability first.
+   ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+:root {
+  /* ---- Paper & graphite ---- */
+  --c-paper: #e9e5dc; /* principal paper */
+  --c-paper-2: #ded8cb; /* shaded paper */
+  --c-paper-3: #f2eee5; /* raised paper */
+  --c-paper-edge: #cdc5b4; /* deckle edge */
+  --c-ink: #2f2d29; /* graphite ink */
+  --c-ink-2: #4b473f; /* secondary graphite */
+  --c-ink-3: #6d675c; /* faint graphite */
+  --c-rule: #b3ab98; /* guide lines */
+  --c-graph: #8a8577; /* grid/graphite */
 
-/* ===========================
-Reset
-=========================== */
+  /* accents: red pencil + blueprint blue + highlighter */
+  --c-red: #b8452f;
+  --c-red-2: #93361f;
+  --c-blue: #2f5d8a;
+  --c-blue-2: #24506f;
+  --c-marker: #f2d75c;
+  --c-marker-2: #e8c93f;
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-body{
+  /* ---- Layout ---- */
+  --maxw: 1140px;
+  --gutter: clamp(20px, 5vw, 46px);
+  --nav-h: 66px;
+  --r: 4px;
 
-cursor:none;
+  /* ---- Type ---- */
+  --font-display: "Architects Daughter", "Trebuchet MS", cursive;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+  --font-hand: "Caveat", "Segoe Script", cursive;
 
-}
-a,
-button,
-input,
-textarea{
+  /* ---- Paper textures ---- */
+  --tex-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
 
-cursor:none;
+  /* Graph-paper grid */
+  --tex-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cpath d='M26 0H0V26' fill='none' stroke='%238a8577' stroke-width='0.6' opacity='0.4'/%3E%3C/svg%3E");
 
-}
-html{
-    scroll-behavior:smooth;
-}
+  /* Hand-drawn squiggle underline */
+  --squiggle-red: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%23b8452f' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  --squiggle-blue: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'%3E%3Cpath d='M2 4.4C18 1.4 38 5 56 3.4S86 2.2 98 4.2' fill='none' stroke='%232f5d8a' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
 
-body{
-
-    font-family:'Space Grotesk',sans-serif;
-
-    background:#050505;
-
-    color:#ffffff;
-
-    overflow-x:hidden;
-
-}
-
-/* Scrollbar */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-track{
-    background:#050505;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#ff003c;
-    border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#ff295d;
-}
-
-/* Selection */
-
-::selection{
-    background:#ff003c;
-    color:white;
+  /* Back-compat aliases */
+  --c-bg: var(--c-paper);
+  --c-deep: var(--c-paper-2);
+  --c-stone: var(--c-paper-3);
+  --c-paper-lt: var(--c-paper-3);
+  --c-ivory: var(--c-ink);
+  --c-sand: var(--c-ink-2);
+  --c-brass: var(--c-red);
+  --c-burg: var(--c-red);
+  --c-burg-2: var(--c-red-2);
+  --squiggle-gold: var(--squiggle-red);
+  --squiggle-burg: var(--squiggle-red);
 }
 
-/* Links */
+/* ---------- Reset ---------- */
 
-a{
-    text-decoration:none;
-    color:inherit;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Lists */
-
-ul{
-    list-style:none;
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
-/* Images */
-
-img{
-    max-width:100%;
-    display:block;
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  background-color: var(--c-paper);
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4),
+      transparent 30%
+    ),
+    radial-gradient(
+      60rem 40rem at 80% -6%,
+      rgba(47, 93, 138, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      48rem 36rem at 8% 40%,
+      rgba(184, 69, 47, 0.05),
+      transparent 62%
+    );
+  color: var(--c-ink);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Buttons */
-
-button{
-    font-family:inherit;
-    cursor:pointer;
+/* Paper grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--tex-noise);
+  background-size: 300px 300px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Inputs */
-
-input,
-textarea{
-    font-family:inherit;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Layout */
-
-main{
-    min-height:100vh;
+ul,
+ol {
+  list-style: none;
 }
 
-/* Background Grid */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background-image:
-        linear-gradient(rgba(255,0,60,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,0,60,.06) 1px, transparent 1px);
-
-    background-size:60px 60px;
-
-    z-index:-2;
-
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* Red Glow */
-
-body::after{
-
-    content:"";
-
-    position:fixed;
-
-    width:500px;
-
-    height:500px;
-
-    background:#ff003c;
-
-    filter:blur(180px);
-
-    opacity:.12;
-
-    top:-150px;
-
-    right:-150px;
-
-    z-index:-1;
-
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Container */
+::selection {
+  background: var(--c-marker);
+  color: var(--c-ink);
+}
 
-.container{
+:focus-visible {
+  outline: 2px dashed var(--focus, var(--c-red));
+  outline-offset: 4px;
+}
 
-    width:min(1200px,90%);
+::-webkit-scrollbar {
+  width: 11px;
+}
 
-    margin:auto;
+::-webkit-scrollbar-track {
+  background: var(--c-paper-2);
+}
 
+::-webkit-scrollbar-thumb {
+  background: var(--c-graph);
+  border-radius: 999px;
+  border: 2px solid var(--c-paper-2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-ink-3);
+}
+
+/* ---------- Skip link ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 400;
+  background: var(--c-ink);
+  color: var(--c-paper);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  width: min(var(--maxw), 100% - var(--gutter) * 2);
+  margin-inline: auto;
+}
+
+main {
+  display: block;
+}
+
+.section {
+  --fg: var(--c-ink);
+  --fg-2: var(--c-ink-2);
+  --acc: var(--c-red);
+  --link-line: rgba(47, 45, 41, 0.3);
+  --line: var(--c-rule);
+  --focus: var(--c-red);
+
+  position: relative;
+  color: var(--fg);
+  padding: clamp(68px, 9vw, 118px) 0;
+  scroll-margin-top: calc(var(--nav-h) + 10px);
+}
+
+/*
+ * Sections are separated by a single hairline rule, not a filled band.
+ * The rule draws in from the left on reveal — the one structural motion
+ * that repeats down the page, tying the whole document together.
+ */
+.section--deep,
+.section--stone {
+  background: none;
+}
+
+.section + .section {
+  border-top: 1px solid var(--c-rule);
+}
+
+/* ---------- Editorial primitives (box-free) ---------- */
+
+/*
+ * .sheet is now inert: containers no longer carry a fill or a border.
+ * It only establishes local colour tokens so children keep their own
+ * foreground without any boxed shape around them.
+ */
+.sheet {
+  --fg: var(--c-ink);
+  --fg-2: var(--c-ink-2);
+  --acc: var(--c-red);
+  --link-line: rgba(47, 45, 41, 0.32);
+  --line: rgba(47, 45, 41, 0.22);
+  --focus: var(--c-red);
+
+  position: relative;
+  color: var(--fg);
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sheet::before {
+  content: none;
+}
+
+/* Retired decorations — kept as no-ops so old markup stays valid. */
+.torn-top,
+.torn-bottom,
+.torn-both,
+.stacked {
+  background: none;
+  box-shadow: none;
+}
+
+.tape {
+  display: none;
+}
+
+.stamp {
+  pointer-events: none;
+}
+
+.stamp-mark {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.stamp-text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/*
+ * .hairline — a full-width pencil rule. Used between records, rows and
+ * blocks in place of cards. Optionally draws itself in on reveal.
+ */
+.hairline {
+  border: none;
+  border-top: 1px solid var(--c-rule);
+  transform-origin: left center;
+}
+
+.motion-ready .hairline {
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1)
+    var(--d, 0ms);
+}
+
+.motion-ready .hairline.is-inview,
+.is-inview .motion-ready .hairline {
+  transform: scaleX(1);
+}
+
+/* ---------- Type utilities ---------- */
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.hand {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--acc);
+}
+
+.hand--sm {
+  font-size: 1rem;
+}
+
+.hand--lg {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+
+.sec-head {
+  position: relative;
+  margin-bottom: clamp(30px, 4.5vw, 52px);
+  max-width: 68ch;
+}
+
+/*
+ * The section opener is set like a printed index entry: a mono number,
+ * a hairline that runs to the end of the row, then the display heading.
+ */
+.sec-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.sec-top .sec-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--c-rule);
+  transform-origin: left center;
+}
+
+.sec-mark {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1.05vw, 0.78rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-red);
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 5.2vw, 3.7rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+  color: var(--c-ink);
+  max-width: 20ch;
+}
+
+.sec-title .accent {
+  color: var(--c-red);
+}
+
+.sec-lede {
+  margin-top: 16px;
+  max-width: 58ch;
+  color: var(--fg-2);
+  font-size: clamp(1rem, 1.25vw, 1.0625rem);
+  line-height: 1.74;
+}
+
+.title-scribble {
+  display: block;
+  width: clamp(150px, 26vw, 280px);
+  margin-top: 10px;
+  color: var(--acc);
+  opacity: 0.9;
+}
+
+/* ---------- Links ---------- */
+
+.hand-link,
+.ink-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  padding-bottom: 5px;
+  border-bottom: 1.5px solid var(--link-line);
+  background-repeat: no-repeat;
+  background-position: left calc(100% - 1px);
+  background-size: 0% 6px;
+  transition: background-size 0.35s ease, border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.hand-link {
+  background-image: var(--squiggle-blue);
+}
+
+.ink-link {
+  background-image: var(--squiggle-red);
+}
+
+.hand-link:hover,
+.hand-link:focus-visible,
+.ink-link:hover,
+.ink-link:focus-visible {
+  background-size: 100% 6px;
+  border-color: transparent;
+}
+
+.hand-link:hover {
+  color: var(--c-blue);
+}
+
+.ink-link:hover {
+  color: var(--c-red);
+}
+
+.hand-link svg,
+.ink-link svg {
+  flex: none;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* ---------- Motion: editorial, restrained ---------- */
+
+/*
+ * Three reveal behaviours, all quiet and typographic:
+ *   .reveal        — content rises a few pixels and fades up.
+ *   .reveal--rule  — a hairline wipes in from the left (for separators).
+ *   .reveal--focus — a heading rises and its letter-spacing settles,
+ *                    so type feels "set" rather than animated.
+ * Everything is staggered by --d (ms) set inline, top-to-bottom, like
+ * typesetting a page.
+ */
+
+.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.65s ease,
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+.motion-ready .reveal.is-inview {
+  opacity: 1;
+  transform: none;
+}
+
+.motion-ready .reveal--rule {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1)
+    var(--d, 0ms);
+}
+
+.motion-ready .reveal--rule.is-inview {
+  transform: scaleX(1);
+}
+
+.motion-ready .reveal--focus {
+  opacity: 0;
+  transform: translateY(10px);
+  letter-spacing: -0.02em;
+  transition: opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+    letter-spacing 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+.motion-ready .reveal--focus.is-inview,
+.motion-ready .reveal.is-inview .reveal--focus {
+  opacity: 1;
+  transform: none;
+  letter-spacing: 0;
+}
+
+/* Legacy paper-rotation reveal still supported (kept subtle). */
+.motion-ready .reveal--paper {
+  transform: translateY(18px) rotate(calc(var(--r, 0deg) - 0.5deg));
+}
+
+.motion-ready .reveal--paper.is-inview {
+  transform: rotate(var(--r, 0deg));
+}
+
+.parallax {
+  transform: translate3d(0, var(--py, 0px), 0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .parallax {
+    transform: none !important;
+  }
+
+  .motion-ready .hairline {
+    transform: none;
+  }
 }

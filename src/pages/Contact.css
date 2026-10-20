@@ -1,228 +1,252 @@
-.contact-page{
-    min-height:100vh;
-    padding:120px 8%;
+.contact-scene {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: clamp(36px, 6vw, 88px);
+  align-items: start;
+  margin-top: clamp(20px, 3vw, 34px);
 }
 
-.contact-header{
-    text-align:center;
-    margin-bottom:70px;
+.contact-head {
+  margin-bottom: clamp(20px, 3vw, 30px);
 }
 
-.contact-header h1{
-    font-size:58px;
-    margin:20px 0;
+.contact-hand {
+  display: block;
+  margin: 14px 0 2px;
+  font-size: 1.35rem;
+  color: var(--c-red);
+  transform: rotate(-1.4deg);
 }
 
-.contact-header span{
-    color:#ff003c;
+.contact-lede {
+  max-width: 56ch;
+  margin-top: 6px;
+  font-size: clamp(16px, 1.4vw, 17.5px);
+  line-height: 1.78;
+  color: var(--c-ink-2);
 }
 
-.contact-header p{
-    color:#999;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
+/* ---- Big mail link, underlined in red pencil ---- */
+
+.contact-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: clamp(24px, 3vw, 34px);
+  padding-bottom: 6px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 4vw, 2.3rem);
+  line-height: 1.1;
+  color: var(--c-ink);
+  border-bottom: 2px solid var(--c-red);
+  transition: color 0.25s ease, border-color 0.25s ease;
+  overflow-wrap: anywhere;
 }
 
-.contact-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
+.contact-mail:hover,
+.contact-mail:focus-visible {
+  color: var(--c-red);
 }
 
-.contact-info{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+.contact-mail-arrow {
+  flex: none;
+  font-size: 0.7em;
+  color: var(--c-red);
+  transition: transform 0.3s ease;
 }
 
-.info-card{
-    display:flex;
-    gap:20px;
-    align-items:center;
-    background:#111;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:22px;
-    transition:.3s;
+.contact-mail:hover .contact-mail-arrow,
+.contact-mail:focus-visible .contact-mail-arrow {
+  transform: translate(3px, -3px);
 }
 
-.info-card:hover{
-    border-color:#ff003c;
-    transform:translateY(-5px);
+/* ---- Index list: numbered rows, hairlines, no cards ---- */
+
+.contact-links {
+  margin-top: clamp(40px, 5vw, 60px);
+  border-top: 1px solid var(--c-rule);
 }
 
-.icon{
-    color:#ff003c;
-    font-size:26px;
+.contact-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 8px 20px;
+  border-bottom: 1px solid var(--c-rule);
 }
 
-.info-card h3{
-    margin-bottom:5px;
+.contact-num {
+  padding-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--c-ink-3);
+  transition: color 0.25s ease;
 }
 
-.info-card p,
-.info-card a{
-    color:#bdbdbd;
-    text-decoration:none;
+.contact-item:hover .contact-num {
+  color: var(--c-red);
 }
 
-.contact-form{
-    background:#111;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:35px;
+.contact-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: baseline;
+  gap: 6px 22px;
+  padding: 16px 0 18px;
 }
 
-.contact-form h2{
-    margin-bottom:30px;
+.contact-label-text {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 3.4vw, 1.9rem);
+  line-height: 1.1;
+  color: var(--c-ink);
+  transition: transform 0.3s ease, color 0.25s ease;
 }
 
-.contact-form form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+.contact-value {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--c-ink-3);
+  overflow-wrap: anywhere;
 }
 
-.contact-form input,
-.contact-form textarea{
-    background:#181818;
-    color:white;
-    border:1px solid #333;
-    padding:15px;
-    border-radius:12px;
-    outline:none;
+.contact-arrow {
+  font-size: 15px;
+  color: var(--c-ink-3);
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus{
-    border-color:#ff003c;
+.contact-item:hover .contact-label-text {
+  transform: translateX(6px);
+  color: var(--c-red);
 }
 
-.contact-form button{
-    background:#ff003c;
-    color:white;
-    border:none;
-    padding:15px;
-    border-radius:35px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    cursor:pointer;
-    transition:.3s;
+.contact-item:hover .contact-arrow {
+  color: var(--c-red);
+  transform: translate(3px, -3px);
 }
 
-.contact-form button:hover{
-    transform:translateY(-4px);
+.contact-filed {
+  display: block;
+  margin-top: 22px;
+  font-size: 1.15rem;
+  color: var(--c-ink-3);
+  transform: rotate(-1deg);
 }
 
-@media(max-width:900px){
+/* ---- Signature ---- */
 
-.contact-container{
-grid-template-columns:1fr;
+.contact-sign {
+  margin-top: clamp(38px, 5vw, 58px);
 }
 
-.contact-header h1{
-font-size:42px;
+.contact-signature {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 1;
+  color: var(--c-ink);
 }
 
-}.connect-card{
-    background:linear-gradient(145deg,#111,#181818);
-    border:1px solid #252525;
-    border-radius:22px;
-    padding:40px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    gap:30px;
+.contact-signature span {
+  color: var(--c-red);
 }
 
-.connect-top h2{
-    font-size:32px;
-    margin-bottom:15px;
+.contact-sig-ink {
+  display: block;
+  width: 170px;
+  margin-top: 6px;
+  color: var(--c-red);
 }
 
-.connect-top p{
-    color:#9c9c9c;
-    line-height:1.8;
+/* ---- Margin column: notes, quote, drawing ---- */
+
+.contact-side {
+  position: relative;
+  padding-top: 6px;
+  display: grid;
+  gap: 26px;
 }
 
-.availability{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
+.contact-notes {
+  display: grid;
+  gap: 6px;
+  padding-left: 18px;
+  border-left: 1.5px solid var(--c-red);
 }
 
-.status{
-    background:#151515;
-    border:1px solid #262626;
-    padding:16px 20px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    transition:.3s;
+.contact-note {
+  font-size: 1.22rem;
+  color: var(--c-red);
+  transform: rotate(-1deg);
 }
 
-.status:hover{
-    border-color:#ff003c;
-    transform:translateX(8px);
+.contact-note--dim {
+  color: var(--c-ink-3);
+  font-size: 1.1rem;
 }
 
-.status-dot{
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background:#00ff66;
-    box-shadow:0 0 15px #00ff66;
+.contact-quote {
+  position: relative;
+  padding-left: 18px;
+  border-left: 1px solid var(--c-rule);
 }
 
-.quick-links{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+.contact-quote p {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  line-height: 1.36;
+  color: var(--c-ink-2);
 }
 
-.action-btn{
-    background:#181818;
-    border:1px solid #2b2b2b;
-    color:white;
-    text-decoration:none;
-    border-radius:14px;
-    padding:18px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    transition:.3s;
+.contact-lock {
+  width: 118px;
+  margin-left: auto;
+  transform: rotate(2deg);
 }
 
-.action-btn:hover{
-    background:#ff003c;
-    transform:translateY(-5px);
+.contact-lock .sketch {
+  color: var(--c-ink-3);
 }
 
-.quote-box{
-    border-left:4px solid #ff003c;
-    padding-left:20px;
+@media (max-width: 900px) {
+  .contact-scene {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .contact-side {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 24px;
+  }
+
+  .contact-lock {
+    width: 96px;
+  }
 }
 
-.quote-box p{
-    color:#d6d6d6;
-    font-size:18px;
-    font-style:italic;
-    line-height:1.7;
-}
+@media (max-width: 560px) {
+  .contact-link {
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+  }
 
-@media(max-width:900px){
+  .contact-value {
+    grid-column: 1 / -1;
+  }
 
-.quick-links{
-    grid-template-columns:1fr;
-}
+  .contact-side {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
 
-.connect-card{
-    padding:30px;
-}
-
+  .contact-lock {
+    margin-left: 0;
+  }
 }

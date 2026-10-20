@@ -1,132 +1,183 @@
 import "./About.css";
+import Reveal from "../components/Reveal";
 import {
-  FaUserGraduate,
-  FaShieldAlt,
-  FaLaptopCode,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+  DoodleArrow,
+  DoodleCircle,
+  DoodleUnderline,
+} from "../components/sketches/Sketches";
+
+const interests = [
+  "Penetration Testing",
+  "SOC Operations",
+  "Web Application Security",
+  "Linux",
+  "Network Security",
+  "AI Security",
+];
+
+const skillGroups = [
+  {
+    label: "Security & Testing",
+    items: [
+      "Burp Suite",
+      "OWASP Top 10",
+      "Nmap",
+      "Hydra",
+      "John the Ripper",
+      "OWASP ZAP",
+      "CyberChef",
+      "Web Application Security",
+      "Vulnerability Assessment",
+      "CTF",
+      "Security Labs",
+    ],
+  },
+  {
+    label: "Networking & Systems",
+    items: ["Linux", "Networking", "TCP/IP", "DNS", "Wireshark"],
+  },
+  {
+    label: "Programming & Development",
+    items: [
+      "JavaScript",
+      "Git",
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST APIs",
+    ],
+  },
+  {
+    label: "Security Operations",
+    items: [
+      "SOC Operations",
+      "SIEM",
+      "Splunk",
+      "Threat Hunting",
+    ],
+  },
+];
 
 function About() {
   return (
-    <section className="about-page">
-      <div className="about-header">
-        <span className="section-tag">ABOUT ME</span>
+    <section className="section about" id="about">
+      <div className="container">
+        <Reveal className="sec-head about-head">
+          <div className="sec-top">
+            <span className="sec-mark">02 / about me</span>
+            <span className="sec-rule" aria-hidden="true" />
+          </div>
+          <h2 className="sec-title reveal--focus">
+            Break It <span className="accent">to Understand It</span>
+          </h2>
+          <DoodleUnderline className="title-scribble" />
+        </Reveal>
 
-        <h1>
-          Who <span>Am I?</span>
-        </h1>
+        <div className="about-composition">
+          <div className="about-bio">
+            <Reveal as="p">
+              I explore cybersecurity from{" "}
+              <span className="about-circle">
+                both sides
+                <DoodleCircle className="about-circle-mark" />
+              </span>{" "}
+              of the battlefield: finding weaknesses and understanding how to
+              defend them. My interests include Offensive Security, SOC
+              Operations, Network Security, Web Security, Linux, and Security
+              Engineering. From CTFs and vulnerability labs to building my own
+              security-focused projects, I'm constantly experimenting with
+              something new.
+            </Reveal>
 
-        <p>
-         Break it to understand it. Understand it to secure it.
-        </p>
-      </div>
+            <Reveal as="p" delay={80}>
+              For me,{" "}
+              <strong>
+                cybersecurity isn't just about running a tool and getting a
+                result
+              </strong>
+              . It's about asking what happened, why it happened, and how to
+              stop it from happening again.
+            </Reveal>
 
-      <div className="about-container">
-        {/* Left Side */}
+            <Reveal as="p" delay={140}>
+              My goal is simple: keep breaking things, keep building things,
+              and become the kind of security engineer who can find the
+              weakness before someone else does.
+            </Reveal>
 
-        <div className="about-content">
-          <h2>Hello, I'm Tejashwin 👋</h2>
+            <Reveal className="about-annotation" delay={200}>
+              <DoodleArrow className="about-arrow" />
+              <span className="hand">two sides, one habit</span>
+            </Reveal>
+          </div>
 
-          <p>
-           I explore cybersecurity from both sides of the battlefield: finding weaknesses and understanding how to defend them. My interests include Offensive Security, SOC Operations, Network Security, Web Security, Linux, and Security Engineering. From CTFs and vulnerability labs to building my own security-focused projects, I’m constantly experimenting with something new.
-          </p>
+          <div className="about-side">
+            <Reveal
+              as="aside"
+              className="about-facts"
+              delay={120}
+              aria-label="Education and focus"
+            >
+              <p className="hand about-facts-title">the short version</p>
 
-          <p>
-            For me, <strong>cybersecurity isn’t just about running a tool and getting a result</strong>. It’s about asking what happened, why it happened, and how to stop it from happening again.
-          </p>
-
-          <p>
-           My goal is simple: keep breaking things, keep building things, and become the kind of security engineer who can find the weakness before someone else does.
-          </p>
+              <dl className="about-fact-list">
+                <div className="about-fact">
+                  <dt>education</dt>
+                  <dd>MSc Cybersecurity · BCA</dd>
+                </div>
+                <div className="about-fact">
+                  <dt>focus</dt>
+                  <dd>Pentesting · SOC · Web · AI Security</dd>
+                </div>
+                <div className="about-fact">
+                  <dt>based in</dt>
+                  <dd>Coimbatore, India</dd>
+                </div>
+                <div className="about-fact">
+                  <dt>languages</dt>
+                  <dd>English · Tamil · Kannada</dd>
+                </div>
+              </dl>
+            </Reveal>
+          </div>
         </div>
 
-        {/* Right Side */}
+        <Reveal className="about-block about-interests">
+          <p className="hand about-block-title">interests</p>
+          <ul className="interest-list">
+            {interests.map((item, idx) => (
+              <li key={item} className="interest-item">
+                <span className="interest-num" aria-hidden="true">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <span className="interest-text">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-        <div className="about-info">
-          <div className="info-card">
-            <FaUserGraduate className="info-icon" />
+        <Reveal className="about-block about-skills">
+          <p className="hand about-block-title">technical skills</p>
 
-            <div>
-              <h4>Education</h4>
-                            <p>BCA</p>
-
-              <p>MSc Cybersecurity</p>
-            </div>
+          <div className="skill-groups">
+            {skillGroups.map((group) => (
+              <section className="skill-group" key={group.label}>
+                <h3>
+                  {group.label}
+                  <span className="skill-rule" aria-hidden="true" />
+                </h3>
+                <ul className="skill-list">
+                  {group.items.map((skill) => (
+                    <li key={skill}>{skill}</li>
+                  ))}
+                </ul>
+              </section>
+            ))}
           </div>
 
-          <div className="info-card">
-            <FaShieldAlt className="info-icon" />
-
-            <div>
-              <h4>Specialization</h4>
-              <p>Networking • SOC • AI in Security</p>
-            </div>
-          </div>
-
-          <div className="info-card">
-            <FaLaptopCode className="info-icon" />
-
-            <div>
-              <h4>Skills</h4>
-              <p>Linux • React • Networking </p>
-            </div>
-          </div>
-
-          <div className="info-card">
-            <FaMapMarkerAlt className="info-icon" />
-
-            <div>
-              <h4>Location</h4>
-              <p>Coimbatore, Tamil Nadu, India</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Skills */}
-
-      <div className="skills-section">
-        <h2>Technical Skills</h2>
-
-        <div className="skills-grid">
-          <span>Linux</span>
-<span>Python</span>
-<span>JavaScript</span>
-<span>Git</span>
-<span>Networking</span>
-<span>TCP/IP</span>
-<span>DNS</span>
-
-<span>Burp Suite</span>
-<span>OWASP Top 10</span>
-<span>Nmap</span>
-<span>Wireshark</span>
-<span>Metasploit</span>
-<span>Hydra</span>
-<span>John the Ripper</span>
-<span>Nikto</span>
-<span>OWASP ZAP</span>
-<span>CyberChef</span>
-
-<span>SOC Operations</span>
-<span>SIEM</span>
-<span>ELK Stack</span>
-<span>Splunk</span>
-<span>Threat Hunting</span>
-<span>MITRE ATT&CK</span>
-
-<span>React</span>
-<span>Node.js</span>
-<span>Express.js</span>
-<span>MongoDB</span>
-<span>REST APIs</span>
-<span>JWT</span>
-
-<span>Web Application Security</span>
-<span>Vulnerability Assessment</span>
-<span>CTF</span>
-<span>Security Labs</span>
-        </div>
+          <p className="hand about-skills-note">all of it, still in progress</p>
+        </Reveal>
       </div>
     </section>
   );

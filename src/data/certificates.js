@@ -30,6 +30,30 @@ const certificates = [
     date: "2025",
     image: "../src/assets/certification/presecurity.svg",
     verify: "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-TLMGRGT22G.pdf",
+  },
+  {
+    id: 5,
+    title: "Foundations of Cybersecurity",
+    issuer: "Google",
+    date: "2025",
+  },
+  {
+    id: 6,
+    title: "JavaScript Foundations Professional Certificate",
+    issuer: "Mozilla",
+    date: "2025",
+  },
+  {
+    id: 7,
+    title: "MERN Full Stack Development",
+    issuer: "MERN",
+    date: "2025",
+  },
+  {
+    id: 8,
+    title: "Advent of Cyber 2025",
+    issuer: "TryHackMe",
+    date: "2025",
   }
 ];
 

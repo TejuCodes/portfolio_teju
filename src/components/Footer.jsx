@@ -1,69 +1,86 @@
 import "./Footer.css";
-import { FaGithub, FaLinkedin, FaInstagram, FaArrowUp } from "react-icons/fa";
+import { FaArrowUp, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  DoodleDivider,
+  DoodleUnderline,
+} from "./sketches/Sketches";
 
 function Footer() {
-
   const scrollTop = () => {
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
 
   return (
-
     <footer className="footer">
+      <div className="container">
+        <div className="footer-top">
+          <div className="footer-identity">
+            <p className="footer-name">
+              Tejashwin <span>S.</span>
+            </p>
+            <DoodleUnderline className="footer-ink" />
+            <p className="footer-role">
+              Cybersecurity Student · Aspiring Security Engineer
+            </p>
+          </div>
 
-      <div className="footer-top">
+          <ul className="footer-social">
+            <li>
+              <a
+                href="https://github.com/TejuCodes"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+              >
+                GitHub <FaGithub aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/faceofteju/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                LinkedIn <FaLinkedin aria-hidden="true" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://instagram.com/faceofteju"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                Instagram <FaInstagram aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
+        </div>
 
-        <div>
+        <DoodleDivider className="footer-rule" />
 
-          <h2>
-            TEJU<span>.</span>
-          </h2>
-
-          <p>
-            Cybersecurity Engineer • SOC • Offensive Security • AI Security
+        <div className="footer-bottom">
+          <p className="footer-copy">
+            © {new Date().getFullYear()} Tejashwin S. — The Dark Archive,
+            kept by hand. Built with React.
           </p>
 
+          <button
+            className="footer-top-btn"
+            onClick={scrollTop}
+            aria-label="Back to top"
+          >
+            back to top <FaArrowUp aria-hidden="true" />
+          </button>
         </div>
-
-        <div className="footer-social">
-
-          <a href="https://github.com/TejuCodes" target="_blank" rel="noreferrer">
-            <FaGithub/>
-          </a>
-
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <FaLinkedin/>
-          </a>
-
-          <a href="https://instagram.com/faceofteju" target="_blank" rel="noreferrer">
-            <FaInstagram/>
-          </a>
-
-        </div>
-
       </div>
-
-      <hr />
-
-      <div className="footer-bottom">
-
-        <p>
-          © {new Date().getFullYear()} Tejashwin. Built with React & ❤️.
-        </p>
-
-        <button onClick={scrollTop}>
-          <FaArrowUp/>
-        </button>
-
-      </div>
-
     </footer>
-
   );
-
 }
 
 export default Footer;

@@ -1,28 +1,44 @@
-import { Routes, Route } from "react-router-dom";
-import Certificates from "./pages/Certificates";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CursorGlow from "./components/CursorGlow";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Experience from "./pages/Experience";
+import Certificates from "./pages/Certificates";
 import Projects from "./pages/Projects";
+import Publication from "./pages/Publication";
 import Contact from "./pages/Contact";
-import Admin from "./pages/Admin";
+
 function App() {
+  useEffect(() => {
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduce) return;
+
+    const root = document.documentElement;
+    root.classList.add("motion-ready");
+
+    return () => root.classList.remove("motion-ready");
+  }, []);
+
   return (
     <>
-    <CursorGlow />
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+
       <Navbar />
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/certificates" element={<Certificates />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <main id="main">
+        <Home />
+        <About />
+        <Experience />
+        <Certificates />
+        <Projects />
+        <Publication />
+        <Contact />
       </main>
 
       <Footer />

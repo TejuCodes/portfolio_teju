@@ -1,66 +1,64 @@
 import "./Home.css";
-import { Link } from "react-router-dom";
+import Reveal from "../components/Reveal";
+import useParallax from "../hooks/useParallax";
 import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaArrowRight,
-} from "react-icons/fa";
+  SketchMonitor,
+  SketchPortrait,
+  DoodleArrowDown,
+  DoodleCircle,
+  DoodleCross,
+  DoodleStar,
+  DoodleUnderline,
+} from "../components/sketches/Sketches";
 
 function Home() {
+  const monitorRef = useParallax({ strength: 0.05, max: 12 });
+
   return (
-    <section className="hero">
+    <section className="section hero" id="home">
+      <div className="container hero-wrap">
+        <div className="hero-margin" aria-hidden="true">
+          <DoodleStar className="hero-doodle hero-doodle--star" />
+          <DoodleCross className="hero-doodle hero-doodle--cross" />
+        </div>
 
-      <div className="hero-left"><br></br>
-        <h1>
-          Building
-          <br />
-          <span>Secure Digital Experiences.</span>
-        </h1>
+        <div className="hero-portrait" aria-hidden="true">
+          <SketchPortrait />
+        </div>
 
-        <p>
-         I'm <strong style={{ color: "red" }}>Tejashwin</strong> a cybersecurity learner who believes the best way to understand security is to get hands-on. I explore everything from offensive security and vulnerability research to SOC operations and network security, while building projects and experimenting with real-world security tools. I break things to understand how they work, build things to make them better, and keep learning along the way.
+        <p className="mono-label hero-eyebrow">
         </p>
 
-        <div className="hero-buttons">
+        <Reveal as="article" className="hero-sheet">
 
-          <Link to="/about" className="primary-btn">
-             About Me
-            <FaArrowRight />
-          </Link>
+          <h1 className="hero-name">
+            Tejashwin{" "}
+            <span className="hero-initial">
+              S.
+              <DoodleCircle className="hero-circle" />
+            </span>
+          </h1>
 
-          <Link to="/projects" className="secondary-btn">
-            View Projects
-          </Link>
+          <DoodleUnderline className="hero-underline" />
 
+          <div className="hero-actions">
+            <a href="#projects" className="ink-link hero-action">
+              Explore My Work <span aria-hidden="true">↘</span>
+            </a>
+            <a href="#contact" className="ink-link hero-action">
+              Get in Touch <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <p className="hand hero-mark">
+            still breaking things, carefully <span aria-hidden="true">✎</span>
+          </p>
+        </Reveal>
+
+        <div className="hero-monitor parallax" ref={monitorRef} aria-hidden="true">
+          <SketchMonitor />
         </div>
-
-        <div className="social-icons">
-
-          <a
-            href="https://github.com/TejuCodes"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub />
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/faceofteju/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-
-          <a href="mailto:tejashwin.cybersec@gmail.com">
-            <FaEnvelope />
-          </a>
-
-        </div>
-
       </div>
-
     </section>
   );
 }
